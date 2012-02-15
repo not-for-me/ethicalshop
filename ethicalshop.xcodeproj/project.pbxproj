@@ -746,11 +746,11 @@
 		CFD8916614E3C4E6000343C5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CFD8916714E3C4E6000343C5 /* DonationTabViewController */,
-				CFD8916C14E3C4E6000343C5 /* QRCodeTabViewController */,
-				CFD8916F14E3C4E6000343C5 /* SettingsTabViewController */,
-				CFD8917A14E3C4E6000343C5 /* ShopTableTabViewController */,
 				CFD8918314E3C4E6000343C5 /* SignInViewController */,
+				CFD8917A14E3C4E6000343C5 /* ShopTableTabViewController */,
+				CFD8916C14E3C4E6000343C5 /* QRCodeTabViewController */,
+				CFD8916714E3C4E6000343C5 /* DonationTabViewController */,
+				CFD8916F14E3C4E6000343C5 /* SettingsTabViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1081,7 +1081,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Woojin Joe (8792684285)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Woojin Joe (8792684285)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1096,6 +1097,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "D2ACCFCF-B084-4B87-A17C-949E7BD46FAF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2ACCFCF-B084-4B87-A17C-949E7BD46FAF";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1105,7 +1108,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Woojin Joe";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Woojin Joe";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1114,6 +1118,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "5C8864B8-6D13-49D6-85C5-4A48A364A520";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C8864B8-6D13-49D6-85C5-4A48A364A520";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1176,6 +1182,7 @@
 				CFD8909F14E3C49A000343C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

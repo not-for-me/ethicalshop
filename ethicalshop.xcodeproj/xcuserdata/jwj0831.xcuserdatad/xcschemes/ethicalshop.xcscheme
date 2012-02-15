@@ -79,6 +79,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "ethicalshop"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

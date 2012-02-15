@@ -134,7 +134,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
             return cell;
         case 2:
-            cell.textLabel.text = [NSString stringWithFormat:@"버전정보   %5.3f", PRGRAMVERSION];
+            cell.textLabel.text = [NSString stringWithFormat:@"버전정보   %@", PRGRAMVERSION];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
