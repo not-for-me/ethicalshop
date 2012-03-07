@@ -268,6 +268,8 @@ static void *finishedContext = @"finishedContext";
                                              delegate:self];
     [_loginDialog show];
   }
+    
+    
 }
 
 /**

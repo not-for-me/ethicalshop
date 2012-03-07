@@ -84,6 +84,8 @@
     [super viewWillAppear:animated];
     if( [NetworkReachability connectedToNetwork] )
         [self shopDataLoad];
+    
+    
 }
 
 - (void)dealloc

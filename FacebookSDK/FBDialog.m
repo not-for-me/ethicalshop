@@ -583,7 +583,8 @@ params   = _params;
 - (void)dialogWillAppear {
 }
 
-- (void)dialogWillDisappear {
+- (void)dialogWillDisappear {    
+
 }
 
 - (void)dialogDidSucceed:(NSURL *)url {

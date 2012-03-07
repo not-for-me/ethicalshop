@@ -1,4 +1,4 @@
-//
+ //
 //  SignInViewController.m
 //  EthicalShop
 //
@@ -24,10 +24,6 @@
     if (self) {
         // Custom initialization
         self.navigationItem.title = @"로그인";
-        UIBarButtonItem *skipLogInButton = [[UIBarButtonItem alloc] initWithTitle:@"둘러보기" style:UIBarButtonItemStylePlain target:self action:@selector(pressedSkipLogIn)];
-        self.navigationItem.rightBarButtonItem = skipLogInButton;
-        
-        [skipLogInButton release];                  
     }
     return self;
 }
@@ -43,7 +39,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -73,11 +69,6 @@
 
 
 #pragma mark - Button Methods
-
-- (void)pressedSkipLogIn
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
 
 - (IBAction)pressedLogIn:(id)sender
 {
@@ -134,6 +125,11 @@
     
 }
 
+- (IBAction)pressedSkipLogIn:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (IBAction)newAccount:(id)sender 
 {
     NewAccountViewController *newAccountViewController = [[NewAccountViewController alloc] initWithNibName:@"NewAccountViewController" bundle:nil];    
@@ -148,6 +144,8 @@
     [self.passwordTextField resignFirstResponder];
 }
 
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField 
 {
     if (textField == eMailTextField) 
@@ -156,5 +154,6 @@
         [passwordTextField resignFirstResponder];  
     return YES;
 }
+
 
 @end

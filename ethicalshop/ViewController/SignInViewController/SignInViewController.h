@@ -12,16 +12,23 @@
 
 @interface SignInViewController : UIViewController
 <UITextFieldDelegate>
+{
+    UITextField *eMailTextField;
+    UITextField *passwordTextField;
+    UIActivityIndicatorView *spinner;
+ 
+}
 
 @property (retain, nonatomic) IBOutlet UITextField *eMailTextField;
 @property (retain, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-- (void)pressedSkipLogIn;
 
 - (IBAction)pressedLogIn:(id)sender;
+- (IBAction)pressedSkipLogIn:(id)sender;
 - (IBAction)newAccount:(id)sender;
 - (IBAction)backgroundTab:(id)sender;
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 

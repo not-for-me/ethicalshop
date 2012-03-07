@@ -88,7 +88,7 @@
         [signInViewController release];
         
         [naviControllerForSignIn.navigationBar setTintColor:[UIColor colorWithRed:124.0/255.0 green:94.0/255.0 blue:72.0/255.0 alpha:1.0]];
-        
+            
         [self.window.rootViewController presentModalViewController:naviControllerForSignIn animated:YES];
         [naviControllerForSignIn release];
     }
