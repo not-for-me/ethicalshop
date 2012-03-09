@@ -7,7 +7,6 @@
 //
 
 #import "DonationStatusViewController.h"
-#import "CollectionViewController.h"
 #import "StackMob.h"
 
 
@@ -42,10 +41,7 @@
     if (self) {
         self.title = @"기부현황";
         self.navigationItem.title = @"기부현황";
-        self.tabBarItem.image = [UIImage imageNamed:@"ES_all_tabicon_donation"];
-        UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithTitle:@"이미지 콜렉션" style:UIBarButtonItemStylePlain target:self action:@selector(pressedCollection)];
-        self.navigationItem.rightBarButtonItem = collectionButton;
-        [collectionButton release];
+        self.tabBarItem.image = [UIImage imageNamed:@"ES_all_tabicon_donation"];        
     }
     return self;
 }
@@ -173,14 +169,4 @@
     [super dealloc];
 }
 
-#pragma mark - Button Methods
-
-- (void)pressedCollection
-{
-    CollectionViewController *collectionViewController = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:collectionViewController animated:YES];
-    
-    [collectionViewController release];    
-}
 @end

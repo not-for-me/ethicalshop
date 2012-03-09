@@ -122,7 +122,7 @@
     switch (indexPath.section) {
         case 0:               
             cell.textLabel.text = [[UserObject sharedUserData] nickName];
-            cell.selectionStyle = UITableViewCellSelectionStyleGray;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;        
         case 1:            
             if(indexPath.row == 0)

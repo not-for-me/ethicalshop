@@ -53,7 +53,5 @@
 @property (nonatomic, retain) IBOutlet UIImageView *puzImage11;
 @property (nonatomic, retain) IBOutlet UIImageView *puzImage12;
 
-- (void)pressedCollection;
-
 @end
 

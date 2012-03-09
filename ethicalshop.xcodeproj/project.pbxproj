@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF44B6051509EBFA0054CB28 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF44B6041509EBFA0054CB28 /* QRCodeScanViewController.m */; };
 		CF955CF314EBB09200CA3D4E /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = CF955CDB14EBB09100CA3D4E /* Facebook.m */; };
 		CF955CF414EBB09200CA3D4E /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CF955CDE14EBB09100CA3D4E /* FBDialog.bundle */; };
 		CF955CF514EBB09200CA3D4E /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CF955CE014EBB09100CA3D4E /* FBDialog.m */; };
@@ -104,9 +105,7 @@
 		CFD891CC14E3C4E6000343C5 /* ES_all_tabicon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD8916314E3C4E6000343C5 /* ES_all_tabicon_setting@2x.png */; };
 		CFD891CD14E3C4E6000343C5 /* ES_alll_tabicon_donation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD8916414E3C4E6000343C5 /* ES_alll_tabicon_donation@2x.png */; };
 		CFD891CE14E3C4E6000343C5 /* ES_alll_tabicon_home.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD8916514E3C4E6000343C5 /* ES_alll_tabicon_home.png */; };
-		CFD891CF14E3C4E6000343C5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8916914E3C4E6000343C5 /* CollectionViewController.m */; };
 		CFD891D014E3C4E6000343C5 /* DonationStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8916B14E3C4E6000343C5 /* DonationStatusViewController.m */; };
-		CFD891D114E3C4E6000343C5 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8916E14E3C4E6000343C5 /* QRCodeScanViewController.m */; };
 		CFD891D214E3C4E6000343C5 /* AccountModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8917114E3C4E6000343C5 /* AccountModifyViewController.m */; };
 		CFD891D314E3C4E6000343C5 /* DonationGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8917314E3C4E6000343C5 /* DonationGuideViewController.m */; };
 		CFD891D414E3C4E6000343C5 /* ESGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8917514E3C4E6000343C5 /* ESGuideViewController.m */; };
@@ -157,6 +156,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF44B6031509EBFA0054CB28 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
+		CF44B6041509EBFA0054CB28 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		CF955CDA14EBB09100CA3D4E /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		CF955CDB14EBB09100CA3D4E /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		CF955CDC14EBB09100CA3D4E /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
@@ -327,12 +328,8 @@
 		CFD8916314E3C4E6000343C5 /* ES_all_tabicon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_all_tabicon_setting@2x.png"; sourceTree = "<group>"; };
 		CFD8916414E3C4E6000343C5 /* ES_alll_tabicon_donation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_alll_tabicon_donation@2x.png"; sourceTree = "<group>"; };
 		CFD8916514E3C4E6000343C5 /* ES_alll_tabicon_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ES_alll_tabicon_home.png; sourceTree = "<group>"; };
-		CFD8916814E3C4E6000343C5 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		CFD8916914E3C4E6000343C5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		CFD8916A14E3C4E6000343C5 /* DonationStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationStatusViewController.h; sourceTree = "<group>"; };
 		CFD8916B14E3C4E6000343C5 /* DonationStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationStatusViewController.m; sourceTree = "<group>"; };
-		CFD8916D14E3C4E6000343C5 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
-		CFD8916E14E3C4E6000343C5 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		CFD8917014E3C4E6000343C5 /* AccountModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountModifyViewController.h; sourceTree = "<group>"; };
 		CFD8917114E3C4E6000343C5 /* AccountModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModifyViewController.m; sourceTree = "<group>"; };
 		CFD8917214E3C4E6000343C5 /* DonationGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationGuideViewController.h; sourceTree = "<group>"; };
@@ -833,10 +830,10 @@
 		CFD8916614E3C4E6000343C5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CFD8916714E3C4E6000343C5 /* DonationTabViewController */,
 				CFD8918314E3C4E6000343C5 /* SignInViewController */,
 				CFD8917A14E3C4E6000343C5 /* ShopTableTabViewController */,
 				CFD8916C14E3C4E6000343C5 /* QRCodeTabViewController */,
-				CFD8916714E3C4E6000343C5 /* DonationTabViewController */,
 				CFD8916F14E3C4E6000343C5 /* SettingsTabViewController */,
 			);
 			path = ViewController;
@@ -845,8 +842,6 @@
 		CFD8916714E3C4E6000343C5 /* DonationTabViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CFD8916814E3C4E6000343C5 /* CollectionViewController.h */,
-				CFD8916914E3C4E6000343C5 /* CollectionViewController.m */,
 				CFD8916A14E3C4E6000343C5 /* DonationStatusViewController.h */,
 				CFD8916B14E3C4E6000343C5 /* DonationStatusViewController.m */,
 			);
@@ -856,8 +851,8 @@
 		CFD8916C14E3C4E6000343C5 /* QRCodeTabViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CFD8916D14E3C4E6000343C5 /* QRCodeScanViewController.h */,
-				CFD8916E14E3C4E6000343C5 /* QRCodeScanViewController.m */,
+				CF44B6031509EBFA0054CB28 /* QRCodeScanViewController.h */,
+				CF44B6041509EBFA0054CB28 /* QRCodeScanViewController.m */,
 			);
 			path = QRCodeTabViewController;
 			sourceTree = "<group>";
@@ -1134,9 +1129,7 @@
 				CFD8919E14E3C4E6000343C5 /* ShopCellInfo.m in Sources */,
 				CFD8919F14E3C4E6000343C5 /* ShopTableCell.m in Sources */,
 				CFD891A014E3C4E6000343C5 /* UserData.m in Sources */,
-				CFD891CF14E3C4E6000343C5 /* CollectionViewController.m in Sources */,
 				CFD891D014E3C4E6000343C5 /* DonationStatusViewController.m in Sources */,
-				CFD891D114E3C4E6000343C5 /* QRCodeScanViewController.m in Sources */,
 				CFD891D214E3C4E6000343C5 /* AccountModifyViewController.m in Sources */,
 				CFD891D314E3C4E6000343C5 /* DonationGuideViewController.m in Sources */,
 				CFD891D414E3C4E6000343C5 /* ESGuideViewController.m in Sources */,
@@ -1160,6 +1153,7 @@
 				CF955CFB14EBB09200CA3D4E /* SBJsonBase.m in Sources */,
 				CF955CFC14EBB09200CA3D4E /* SBJsonParser.m in Sources */,
 				CF955CFD14EBB09200CA3D4E /* SBJsonWriter.m in Sources */,
+				CF44B6051509EBFA0054CB28 /* QRCodeScanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

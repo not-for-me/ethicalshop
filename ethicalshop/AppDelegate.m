@@ -125,9 +125,18 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[UserData dataFilePath]])
+    {
+        //userData.plist file doesn't exist in the app.
+        SignInViewController *signInViewController = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
+        UINavigationController *naviControllerForSignIn = [[UINavigationController alloc] initWithRootViewController:signInViewController];
+        [signInViewController release];
+        
+        [naviControllerForSignIn.navigationBar setTintColor:[UIColor colorWithRed:124.0/255.0 green:94.0/255.0 blue:72.0/255.0 alpha:1.0]];
+        
+        [self.window.rootViewController presentModalViewController:naviControllerForSignIn animated:YES];
+        [naviControllerForSignIn release];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
