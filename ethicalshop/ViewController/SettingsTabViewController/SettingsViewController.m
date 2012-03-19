@@ -11,6 +11,7 @@
 #import "ESGuideViewController.h"
 #import "DonationGuideViewController.h"
 #import "SharingVisionViewController.h"
+#import "SignInViewController.h"
 
 @implementation SettingsViewController
 
@@ -98,7 +99,10 @@
 {
     switch (section) {
         case 0:
-            return @"닉네임";
+            if(![UserObject userFileIsIn]) 
+                return @"로그인 / 가입하기";
+            else                    
+                return @"닉네임";
         case 1:
             return @"알림";
         case 2:
@@ -120,9 +124,18 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.section) {
-        case 0:               
-            cell.textLabel.text = [[UserObject sharedUserData] nickName];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        case 0:
+            if(![UserObject userFileIsIn]) {
+                cell.textLabel.text = @"로그인 하기";
+                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            else {
+                cell.textLabel.text = [[UserObject sharedUserData] nickName];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
             return cell;        
         case 1:            
             if(indexPath.row == 0)
@@ -149,9 +162,15 @@
     switch (indexPath.section) {
         case 0: {
             if([NetworkReachability connectedToNetwork] == 0 || [UserObject userFileIsIn] == NO ) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"설정 변경 불가" message:@"네트워크 문제이거나 로그인되어 있지 않아 닉네임을 변경할 수 없습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
-                [alert show];
-                [alert release];
+                //userData.plist file doesn't exist in the app.
+                SignInViewController *signInViewController = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
+                UINavigationController *naviControllerForSignIn = [[UINavigationController alloc] initWithRootViewController:signInViewController];
+                [signInViewController release];
+                
+                [naviControllerForSignIn.navigationBar setTintColor:[UIColor colorWithRed:124.0/255.0 green:94.0/255.0 blue:72.0/255.0 alpha:1.0]];
+                
+                [self presentModalViewController:naviControllerForSignIn animated:YES];
+                [naviControllerForSignIn release];
                 break;
             }
             AccountModifyViewController *detailViewController = [[AccountModifyViewController alloc] initWithNibName:@"AccountModifyViewController" bundle:nil];

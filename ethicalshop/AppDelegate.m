@@ -81,7 +81,7 @@
     [self.window makeKeyAndVisible];
     
     
-    [[StackMob stackmob] startSession];
+    //[[StackMob stackmob] startSession];
     
     // Check User's data from the app.    
     if (![[NSFileManager defaultManager] fileExistsAtPath:[UserData dataFilePath]])
@@ -152,7 +152,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[UserData dataFilePath]])
+    if (![UserObject userFileIsIn])
     {
         //userData.plist file doesn't exist in the app.
         SignInViewController *signInViewController = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
@@ -173,7 +173,7 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
-    [[StackMob stackmob] endSession];
+    //[[StackMob stackmob] endSession];
 }
 
 @end
