@@ -12,6 +12,7 @@
 #import "DonationStatusViewController.h"
 #import "QRCodeScanViewController.h"
 #import "SettingsViewController.h"
+#import "StackMob.h"
 
 @implementation AppDelegate
 
@@ -80,6 +81,9 @@
     [self.window makeKeyAndVisible];
     
     
+    [[StackMob stackmob] startSession];
+    
+    // Check User's data from the app.    
     if (![[NSFileManager defaultManager] fileExistsAtPath:[UserData dataFilePath]])
     {
         //userData.plist file doesn't exist in the app.
@@ -88,9 +92,32 @@
         [signInViewController release];
         
         [naviControllerForSignIn.navigationBar setTintColor:[UIColor colorWithRed:124.0/255.0 green:94.0/255.0 blue:72.0/255.0 alpha:1.0]];
-            
+        
         [self.window.rootViewController presentModalViewController:naviControllerForSignIn animated:YES];
         [naviControllerForSignIn release];
+    }
+    // Update User's Information from the server
+    else {
+        StackMobQuery *q = [StackMobQuery query];
+
+        [[StackMob stackmob] get:[NSString stringWithFormat: @"user/%@", [[UserObject sharedUserData] eMail]] withQuery:q andCallback:^(BOOL success, id result)  {
+            if(success){
+                NSArray *resultArray = (NSArray *) result;
+                NSDictionary *dic = (NSDictionary *) resultArray;
+                NSString *nickName = [dic objectForKey:@"nickname"];                  
+                [UserObject updateNickName:nickName];
+                [UserObject writeUserDataToFile];                        
+                //[spinner stopAnimating];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                //[self dismissModalViewControllerAnimated:YES];
+            } else {
+                //[spinner stopAnimating];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"사용자 정보 저장 오류" message:@"사용자 정보를 아이폰에 업데이트 하지 못하였습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+            }
+        }];
     }
     [naviController1 release];
     [naviController2 release];
@@ -146,6 +173,7 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    [[StackMob stackmob] endSession];
 }
 
 @end

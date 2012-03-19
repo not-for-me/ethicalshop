@@ -16,7 +16,6 @@
 @synthesize photoLink;
 @synthesize summary;
 @synthesize shop_type;
-@synthesize count;
 
 - (void)dealloc
 {
@@ -25,7 +24,7 @@
     [shop_name release];
     [photoLink release];    
     [summary release];
-    [count release];    
+
     [super dealloc];
 }
 

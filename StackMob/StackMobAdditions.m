@@ -30,7 +30,13 @@
         if ([argumentValue isKindOfClass:[NSArray class]]) {
             preparedArgVal = [(NSArray *)argumentValue componentsJoinedByString:@","];
         } else if([argumentValue isKindOfClass:[NSNumber class]]) {
-            preparedArgVal = [argumentValue stringValue];
+            if(argumentValue == (id)kCFBooleanTrue) {
+                preparedArgVal = @"true";
+            } else if (argumentValue == (id)kCFBooleanFalse) {
+                preparedArgVal = @"false";
+            } else {
+                preparedArgVal = [argumentValue stringValue];
+            }
         } else {
             preparedArgVal = argumentValue;
         }

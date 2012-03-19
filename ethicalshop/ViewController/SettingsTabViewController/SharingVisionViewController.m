@@ -17,7 +17,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.navigationItem.title = @"비전 쉐어링";
+        self.navigationItem.title = @"초콜렛박스";
     }
     return self;
 }

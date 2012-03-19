@@ -85,7 +85,6 @@
     if( [NetworkReachability connectedToNetwork] )
         [self shopDataLoad];
     
-    
 }
 
 - (void)dealloc
@@ -158,7 +157,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:CellIdentifier] autorelease];
+                                           reuseIdentifier:CellIdentifier] autorelease];
         }
         cell.textLabel.text = @"네트워크 접속 필요";
         return cell;
@@ -222,8 +221,8 @@
         
         // Making shop Image corner rounding
         cell.shopMarkImageView.layer.cornerRadius = 8;
-        cell.shopMarkImageView.layer.borderColor = [[UIColor darkGrayColor]CGColor];
-        cell.shopMarkImageView.layer.borderWidth = 1.0f;
+        //cell.shopMarkImageView.layer.borderColor = [[UIColor darkGrayColor]CGColor];
+        //cell.shopMarkImageView.layer.borderWidth = 1.0f;
         cell.shopMarkImageView.layer.masksToBounds = YES;
         // Only load cached images; defer new downloads until scrolling ends
         if (!shopInfo.photoImage) {
@@ -365,7 +364,6 @@
                 shopInfo.photoLink = [dic objectForKey:@"photo"];
                 shopInfo.summary = [dic objectForKey:@"summary"];
                 shopInfo.shop_type = [[dic objectForKey:@"shop_type"] intValue];
-                shopInfo.count = [dic objectForKey:@"count"];
                 [self.listData addObject:shopInfo];
                 row++;
                 [shopInfo release];
@@ -413,41 +411,22 @@
         detailViewController.photoImage = shopInfo.photoImage;
     [self.navigationController pushViewController:detailViewController animated:YES];
     
-    //광고노출 횟수 증가
-    NSInteger countInt = [shopInfo.count intValue];
-    countInt++;
-    shopInfo.count = [NSString stringWithFormat:@"%d",countInt];
-    NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:shopInfo.count, @"count", nil];
     
-    [spinner startAnimating];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [[StackMob stackmob] put:@"shops" withId:shopInfo.shops_id andArguments:args andCallback:^(BOOL success, id result) {
-        if (success) {
-            [spinner stopAnimating];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        } else {
-            [spinner stopAnimating];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        }
-    }];
     
-    NSString *nickname = [[UserObject sharedUserData] nickName];
     
-    StackMobQuery *q1 = [StackMobQuery query];
-    [q1 field:@"nickname" mustEqualValue:nickname];
-    
-    [spinner startAnimating];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [[StackMob stackmob] get:@"user" withQuery:q1 andCallback:^(BOOL success, id result){
-        if(success){
-            NSArray *resultArr = (NSArray *) result;
-            NSDictionary *dic = [resultArr objectAtIndex:0];
-            NSString *eMail = [dic objectForKey:@"email"];
-            NSInteger countInt = [[dic objectForKey:@"count"] intValue];
-            countInt++;
-            NSString *count = [NSString stringWithFormat:@"%d",countInt];
-            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:count, @"count", nil];
-            [[StackMob stackmob] put:@"user" withId:eMail andArguments:args andCallback:^(BOOL success, id result) {
+    [[StackMob stackmob] get:[NSString stringWithFormat:@"user/%@", [[UserObject sharedUserData] eMail]] withCallback:^(BOOL success, id result){
+        if(success) {
+            
+            NSDictionary *dic = (NSDictionary *) result;
+            NSInteger point = [[dic objectForKey:@"point"] intValue];
+            point++;
+            NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
+            totalPoint++;
+            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:point], @"point", [NSNumber numberWithInteger:totalPoint], @"totalpoint", nil];
+            
+            [[StackMob stackmob] put:@"user" withId:[[UserObject sharedUserData] eMail] andArguments:args andCallback:^(BOOL success, id result) {
                 if (success) {
                     [spinner stopAnimating];
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -455,9 +434,22 @@
                     [spinner stopAnimating];
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 }
-            }];
+            }];            
+            
+            /*
+             NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+             [dateFormat setDateFormat:@"yyyy-MM-dd"];
+             NSString *todayDate = [dateFormat stringFromDate:[NSDate date]];
+             NSDictionary *args1 = [NSDictionary dictionaryWithObjectsAndKeys:todayDate,@"date",shopInfo.shops_id, @"shop_id", @"point", @"type", nil];
+             
+             [[StackMob stackmob] post:@"user" withId:[[UserObject sharedUserData] eMail] andField:@"point_history" andArguments:args1 andCallback:^(BOOL success, id result) {
+             
+             }];
+             */
         }
     }];
+    
+    
     [detailViewController release];
 }
 

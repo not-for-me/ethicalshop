@@ -115,7 +115,7 @@
     for(symbol in results)
         // EXAMPLE: just grab the first barcode
         break;
-     
+    
     // EXAMPLE: do something useful with the barcode data
     resultText = [symbol.data mutableCopy];
     
@@ -136,49 +136,47 @@
         shop_id = [resultText substringWithRange:NSMakeRange(13, 2)];
     else
         shop_id = [resultText substringWithRange:NSMakeRange(14, 1)];
-    
-    
-    StackMobQuery *q1 = [StackMobQuery query];
-    [q1 field:@"shops_id" mustEqualValue:shop_id];
-    
+  
+
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [[StackMob stackmob] get:@"shops" withQuery:q1 andCallback:^(BOOL success, id result){
-        NSArray *resultArr = (NSArray *) result;
-        if(success && [resultArr count]>0){
-            NSDictionary *dic = [resultArr objectAtIndex:0];
-            NSString *shop_id = [dic objectForKey:@"shops_id"];
-            NSInteger countInt = [[dic objectForKey:@"count"] intValue];
-            countInt = countInt + 5;
-            NSString *count = [NSString stringWithFormat:@"%d",countInt];
-            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:count, @"count", nil];
-            self.qrLabel.text = [dic objectForKey:@"shop_name"];
+    
+    [[StackMob stackmob] get:[NSString stringWithFormat:@"shop_info/%@", shop_id] withCallback:^(BOOL success, id result){
+        if(success) {
+            NSDictionary *dic = (NSDictionary *) result;
+            self.qrLabel.text = [dic objectForKey:@"name"];
+            NSInteger checkin = [[dic objectForKey:@"checkin"] intValue];
+            checkin++;
+            NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
+            totalPoint += 5;
             
-            [[StackMob stackmob] put:@"shops" withId:shop_id andArguments:args andCallback:^(BOOL success, id result) {
+            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:checkin], @"checkin", [NSNumber numberWithInteger:totalPoint], @"totalpoint",nil];                        
+            [[StackMob stackmob] put:@"shop_info" withId:shop_id andArguments:args andCallback:^(BOOL success, id result) {
                 if (success) {
-                } else {
+                } 
+                else {
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"사용자 정보 저장 오류" message:@"사용자 정보를 아이폰에 업데이트 하지 못하였습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"사용자 정보 저장 오류" message:@"가맹점 정보를 아이폰에 업데이트 하지 못하였습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
                     [alert show];
                     [alert release];
                 }
             }];
             
-            StackMobQuery *q2 = [StackMobQuery query];
-            [q2 field:@"nickname" mustEqualValue:[[UserObject sharedUserData] nickName]];
             
-            [[StackMob stackmob] get:@"user" withQuery:q2 andCallback:^(BOOL success, id result){
+            [[StackMob stackmob] get:[NSString stringWithFormat:@"user/%@",[[UserObject sharedUserData] eMail]]  withCallback:^(BOOL success, id result){
                 if(success){
-                    NSArray *resultArr = (NSArray *) result;
-                    NSDictionary *dic = [resultArr objectAtIndex:0];
-                    NSString *eMail = [dic objectForKey:@"email"];
-                    NSInteger countInt = [[dic objectForKey:@"count"] intValue];
-                    countInt = countInt + 5;
-                    NSString *count = [NSString stringWithFormat:@"%d",countInt];
-                    NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:count, @"count", nil];
-                    [[StackMob stackmob] put:@"user" withId:eMail andArguments:args andCallback:^(BOOL success, id result) {
+                    NSDictionary *dic = (NSDictionary *) result;
+                    NSInteger checkin = [[dic objectForKey:@"checkin"] intValue];
+                    checkin++;                   
+                    NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
+                    totalPoint += 5;
+                    
+                    NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:checkin], @"checkin", [NSNumber numberWithInteger:totalPoint], @"totalpoint",nil]; 
+
+
+                    [[StackMob stackmob] put:@"user" withId:[[UserObject sharedUserData] eMail] andArguments:args andCallback:^(BOOL success, id result) {
                         if (success) {
                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;                    
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QR 코드 등록 완료" message:[NSString stringWithFormat:@"%@을 방문해 주셔서 감사합니다.", self.qrLabel.text] delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"체크인 완료" message:[NSString stringWithFormat:@"%@을 방문해 주셔서 감사합니다.", self.qrLabel.text] delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
                             [alert show];
                             [alert release];
                         } else {
@@ -200,10 +198,10 @@
             self.qrLabel.text = @"";
             return;
         }
-            
+        
     }];
     
-
+    
     
     // EXAMPLE: do something useful with the barcode image
     resultImage.image =

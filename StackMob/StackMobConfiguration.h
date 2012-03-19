@@ -13,13 +13,12 @@
 // limitations under the License.
 
 #if DEBUG
-    #define SMLog(format, ...) {NSLog(format, ##__VA_ARGS__);}
-    #define StackMobDebug(format, ...) {NSLog([[NSString stringWithFormat:@"[%s, %@, %d] ", __PRETTY_FUNCTION__, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__] stringByAppendingFormat:format, ##__VA_ARGS__]);}
+#define SMLog(format, ...) {NSLog(format, ##__VA_ARGS__);}
+#define StackMobDebug(format, ...) {NSLog([[NSString stringWithFormat:@"[%s, %@, %d] ", __PRETTY_FUNCTION__, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__] stringByAppendingFormat:format, ##__VA_ARGS__]);}
 #else
-    #define SMLog(format, ...) {NSLog(format, ##__VA_ARGS__);}
-    #define StackMobDebug(format, ...) {NSLog([[NSString stringWithFormat:@"[%s, %@, %d] ", __PRETTY_FUNCTION__, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__] stringByAppendingFormat:format, ##__VA_ARGS__]);}
+#define SMLog(format, ...)
+#define StackMobDebug(format, ...)
 #endif
-
 
 #define STACKMOB_PUBLIC_KEY         @"ae4762f5-9114-4ebe-b581-3b644f020da4"
 #define STACKMOB_PRIVATE_KEY        @"14729db3-a68d-4188-88fc-8dd2c891c916"

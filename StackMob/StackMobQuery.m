@@ -90,6 +90,10 @@ const double earthRadiamInKm = 6367.5;
     [self.headers setValue:[NSString stringWithFormat:@"%d", depth] forKey:@"X-StackMob-Expand"];
 }
 
+- (void)setSelectionToFields:(NSArray *)fields {
+    [self.headers setValue:[fields componentsJoinedByString:@","] forKey:@"X-StackMob-Select"];
+}
+
 - (void)setRangeStart:(NSUInteger)start andEnd:(NSUInteger)end {
     [self.headers setValue:[NSString stringWithFormat:@"objects=%d-%d", start, end] forKey:@"Range"];
 }

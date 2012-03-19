@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ShopCellInfo.h"
+#import "UserData.h"
 
 @interface ShopDetailInfoViewController : UIViewController
 {
@@ -18,6 +19,9 @@
     NSInteger numImage;
     UIImage *photoImage;
     NSArray *resultArray;
+    NSInteger point;
+    NSInteger checkin;
+    
     NSMutableArray *shopPicArray;
     
     UILabel *nameLabel;
@@ -55,6 +59,8 @@
 @property (nonatomic, retain) UIImage *photoImage;
 @property (nonatomic, retain) NSArray *resultArray;
 @property (nonatomic, retain) NSMutableArray *shopPicArray;
+@property (nonatomic) NSInteger point;
+@property (nonatomic) NSInteger checkin;
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *mainPhoto;

@@ -8,7 +8,7 @@
 
 #import "DonationStatusViewController.h"
 #import "StackMob.h"
-
+#import "QuartzCore/QuartzCore.h"
 
 @implementation DonationStatusViewController
 
@@ -17,21 +17,29 @@
 @synthesize myBalloonLabel;
 @synthesize totalBalloonCount;
 @synthesize personalBalloonCount;
-
+@synthesize rankingScrollView;
+@synthesize rankingView;
+@synthesize firstNickNameLabel;
+@synthesize firstPointLabel;
+@synthesize secondNickNameLabel;
+@synthesize secondPointLabel;
+@synthesize thirdNickNameLabel;
+@synthesize thirdPointLabel;
+@synthesize fourthNickNameLabel;
+@synthesize fourthPointLabel;
+@synthesize fifthNickNameLabel;
+@synthesize fifthPointLabel;
+@synthesize sixthNickNameLabel;
+@synthesize sixthPointLabel;
+@synthesize seventhNickNameLabel;
+@synthesize seventhPointLabel;
+@synthesize eighthNickNameLabel;
+@synthesize eighthPointLabel;
+@synthesize ninthNickNameLabel;
+@synthesize ninthPointLabel;
+@synthesize tenthNickNameLabel;
+@synthesize tenthPointLabel;
 @synthesize spinner;
-
-@synthesize puzImage1;
-@synthesize puzImage2;
-@synthesize puzImage3;
-@synthesize puzImage4;
-@synthesize puzImage5;
-@synthesize puzImage6;
-@synthesize puzImage7;
-@synthesize puzImage8;
-@synthesize puzImage9;
-@synthesize puzImage10;
-@synthesize puzImage11;
-@synthesize puzImage12;
 
 #pragma mark - View Initialize
 
@@ -59,6 +67,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [rankingScrollView setContentSize:CGSizeMake(280,240)];
+    // Making shop Image corner rounding
+    rankingView.layer.cornerRadius = 8;
+    //rankingScrollView.layer.borderColor = [[UIColor darkGrayColor]CGColor];
+    //rankingScrollView.layer.borderWidth = 1.0f;
+    //rankingScrollView.layer.masksToBounds = YES;
     // Do any additional setup after loading the view from its nib.
     
 }
@@ -68,36 +82,147 @@
     [self.totalBalloonLabel setHidden:YES];
     [self.IDLabel setHidden:YES];
     [self.myBalloonLabel setHidden:YES];
+    [self.firstNickNameLabel setHidden:YES];
+    [self.firstPointLabel setHidden:YES];
+    [self.secondNickNameLabel setHidden:YES];
+    [self.secondPointLabel setHidden:YES];
+    [self.thirdNickNameLabel setHidden:YES];
+    [self.thirdPointLabel setHidden:YES];
+    [self.fourthNickNameLabel setHidden:YES];
+    [self.fourthPointLabel setHidden:YES];
+    [self.fifthNickNameLabel setHidden:YES];
+    [self.fifthPointLabel setHidden:YES];
+    [self.sixthNickNameLabel setHidden:YES];
+    [self.sixthPointLabel setHidden:YES];
+    [self.seventhNickNameLabel setHidden:YES];
+    [self.seventhPointLabel setHidden:YES];
+    [self.eighthNickNameLabel setHidden:YES];
+    [self.eighthPointLabel setHidden:YES];
+    [self.ninthNickNameLabel setHidden:YES];
+    [self.ninthPointLabel setHidden:YES];
+    [self.tenthNickNameLabel setHidden:YES];
+    [self.tenthPointLabel setHidden:YES];
     
     self.IDLabel.text = [[UserObject sharedUserData] nickName];
     self.totalBalloonCount = 0;
     if([NetworkReachability connectedToNetwork] && [UserObject userFileIsIn]) {
         [spinner startAnimating];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;    
-        [[StackMob stackmob] get:@"shops" withCallback:^(BOOL success, id result) {
+        
+               
+        [[StackMob stackmob] get:@"shop_info" withCallback:^(BOOL success, id result) {
             if(success) {
                 NSArray *resultSet = (NSArray *)result;
                 int i = 0;
                 for(NSDictionary *dictionary in resultSet) {                
                     NSDictionary *dic = [resultSet objectAtIndex:i];
-                    NSString *countNum = [dic objectForKey:@"count"];
-                    self.totalBalloonCount += [countNum intValue];
+                    NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
+                    self.totalBalloonCount += totalPoint;
                     i++;
                 }
                 
                 [[StackMob stackmob] get:[NSString stringWithFormat:@"user/%@",[[UserObject sharedUserData] eMail]] withCallback:^(BOOL success, id result){
                     if(success) {                                
                         NSDictionary *dic = (NSDictionary *) result;
-                        NSString *countNum = [dic objectForKey:@"count"];
+                        NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
                         
                         [spinner stopAnimating];
                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                         
-                        self.myBalloonLabel.text = countNum;
+                        self.myBalloonLabel.text = [NSString stringWithFormat:@"%d", totalPoint];
                         self.totalBalloonLabel.text = [NSString stringWithFormat:@"%d", self.totalBalloonCount];
                         [self.totalBalloonLabel setHidden:NO];
                         [self.IDLabel setHidden:NO];
                         [self.myBalloonLabel setHidden:NO];
+                        
+                        
+                        StackMobQuery *q = [StackMobQuery query];
+                        [q orderByField:@"totalpoint" withDirection:SMOrderDescending];
+                                                
+                        // perform the query and handle the results
+                        [[StackMob stackmob] get:@"user" withQuery:q andCallback:^(BOOL success, id result) {
+                            if (success) {
+                                NSArray *resultSet = (NSArray *)result;
+                                int i = 0;
+                                // cast result to NSArray and process results
+                                for(NSDictionary *dictionary in resultSet) {                
+                                    NSDictionary *dic = [resultSet objectAtIndex:i];
+                                    NSString *nickName = [dic objectForKey:@"nickname"];
+                                    NSString *point = [NSString stringWithFormat:@"%d", [[dic objectForKey:@"totalpoint"] intValue]];
+                                    switch (i) {
+                                        case 0:
+                                            firstNickNameLabel.text = nickName;
+                                            firstPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 1:
+                                            secondNickNameLabel.text = nickName;
+                                            secondPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 2:
+                                            thirdNickNameLabel.text = nickName;
+                                            thirdPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 3:
+                                            fourthNickNameLabel.text = nickName;
+                                            fourthPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 4:
+                                            fifthNickNameLabel.text = nickName;
+                                            fifthPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 5:
+                                            sixthNickNameLabel.text = nickName;
+                                            sixthPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 6:
+                                            seventhNickNameLabel.text = nickName;
+                                            seventhPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 7:
+                                            eighthNickNameLabel.text = nickName;
+                                            eighthPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 8:
+                                            ninthNickNameLabel.text = nickName;
+                                            ninthPointLabel.text = point;                                                                                 
+                                            break;
+                                        case 9:
+                                            tenthNickNameLabel.text = nickName;
+                                            tenthPointLabel.text = point;                                                                                 
+                                            break;
+                                            
+                                        default:
+                                            break;
+                                    }
+                                    [self.firstNickNameLabel setHidden:NO];
+                                    [self.firstPointLabel setHidden:NO];
+                                    [self.secondNickNameLabel setHidden:NO];
+                                    [self.secondPointLabel setHidden:NO];
+                                    [self.thirdNickNameLabel setHidden:NO];
+                                    [self.thirdPointLabel setHidden:NO];
+                                    [self.fourthNickNameLabel setHidden:NO];
+                                    [self.fourthPointLabel setHidden:NO];
+                                    [self.fifthNickNameLabel setHidden:NO];
+                                    [self.fifthPointLabel setHidden:NO];
+                                    [self.sixthNickNameLabel setHidden:NO];
+                                    [self.sixthPointLabel setHidden:NO];
+                                    [self.seventhNickNameLabel setHidden:NO];
+                                    [self.seventhPointLabel setHidden:NO];
+                                    [self.eighthNickNameLabel setHidden:NO];
+                                    [self.eighthPointLabel setHidden:NO];
+                                    [self.ninthNickNameLabel setHidden:NO];
+                                    [self.ninthPointLabel setHidden:NO];
+                                    [self.tenthNickNameLabel setHidden:NO];
+                                    [self.tenthPointLabel setHidden:NO];                                   
+                                    i++;
+                                }
+                            } 
+                            else {
+                                // cast result to NSError and handle query error
+                            }
+                        }];                        
+                        
+                        
                     }
                     else {
                         [spinner stopAnimating];
@@ -126,18 +251,28 @@
     [self setIDLabel:nil];
     [self setMyBalloonLabel:nil];
     [self setSpinner:nil];
-    [self setPuzImage1:nil];
-    [self setPuzImage2:nil];
-    [self setPuzImage3:nil];
-    [self setPuzImage4:nil];    
-    [self setPuzImage5:nil];
-    [self setPuzImage6:nil];
-    [self setPuzImage7:nil];
-    [self setPuzImage8:nil];
-    [self setPuzImage9:nil];
-    [self setPuzImage10:nil];
-    [self setPuzImage11:nil];
-    [self setPuzImage12:nil];
+    [self setRankingScrollView:nil];
+    [self setFirstNickNameLabel:nil];
+    [self setFirstPointLabel:nil];
+    [self setSecondNickNameLabel:nil];
+    [self setSecondPointLabel:nil];
+    [self setThirdNickNameLabel:nil];
+    [self setThirdPointLabel:nil];
+    [self setFourthNickNameLabel:nil];
+    [self setFourthPointLabel:nil];
+    [self setFifthNickNameLabel:nil];
+    [self setFifthPointLabel:nil];
+    [self setSixthNickNameLabel:nil];
+    [self setSixthPointLabel:nil];
+    [self setSeventhNickNameLabel:nil];
+    [self setSeventhPointLabel:nil];
+    [self setEighthNickNameLabel:nil];
+    [self setEighthPointLabel:nil];
+    [self setNinthNickNameLabel:nil];
+    [self setNinthPointLabel:nil];
+    [self setTenthNickNameLabel:nil];
+    [self setTenthPointLabel:nil];
+    [self setRankingView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -154,18 +289,28 @@
     [IDLabel release];
     [myBalloonLabel release];
     [spinner release];
-    [puzImage1 release];
-    [puzImage2 release];
-    [puzImage3 release];
-    [puzImage4 release];
-    [puzImage5 release];
-    [puzImage6 release];
-    [puzImage7 release];
-    [puzImage8 release];
-    [puzImage9 release];
-    [puzImage10 release];
-    [puzImage11 release];
-    [puzImage12 release];
+    [rankingScrollView release];
+    [firstNickNameLabel release];
+    [firstPointLabel release];
+    [secondNickNameLabel release];
+    [secondPointLabel release];
+    [thirdNickNameLabel release];
+    [thirdPointLabel release];
+    [fourthNickNameLabel release];
+    [fourthPointLabel release];
+    [fifthNickNameLabel release];
+    [fifthPointLabel release];
+    [sixthNickNameLabel release];
+    [sixthPointLabel release];
+    [seventhNickNameLabel release];
+    [seventhPointLabel release];
+    [eighthNickNameLabel release];
+    [eighthPointLabel release];
+    [ninthNickNameLabel release];
+    [ninthPointLabel release];
+    [tenthNickNameLabel release];
+    [tenthPointLabel release];
+    [rankingView release];
     [super dealloc];
 }
 

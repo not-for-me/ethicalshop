@@ -13,4 +13,4 @@
 // limitations under the License.
 
 
-#define STACKMOB_SDK_VERSION @"0.4.1"
+#define STACKMOB_SDK_VERSION @"0.4.3"

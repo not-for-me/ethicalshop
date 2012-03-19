@@ -130,7 +130,7 @@
             else if(indexPath.row == 1)
                 cell.textLabel.text = @"기부대상은?";
             else if (indexPath.row == 2)
-                cell.textLabel.text = @"꿈을 나누기";
+                cell.textLabel.text = @"초콜렛박스";
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
             return cell;
         case 2:

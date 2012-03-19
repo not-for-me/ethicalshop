@@ -9,6 +9,7 @@
 #import "ShopDetailInfoViewController.h"
 #import "DetailMapViewController.h"
 #import "StackMob.h"
+#import "QuartzCore/QuartzCore.h"
 
 @implementation ShopDetailInfoViewController
 
@@ -20,6 +21,8 @@
 @synthesize photoImage;
 @synthesize resultArray;
 @synthesize shopPicArray;
+@synthesize point;
+@synthesize checkin;
 
 @synthesize nameLabel;
 @synthesize mainPhoto;
@@ -96,21 +99,35 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     }
     
     // Do any additional setup after loading the view from its nib.
-    StackMobQuery *q = [StackMobQuery query];
-    [q field:@"shop_info_id" mustEqualValue:shops_id];
     
     [spinner1 startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [[StackMob stackmob] get:@"shop_info" withQuery:q andCallback:^(BOOL success, id result){
+    [[StackMob stackmob] get:[NSString stringWithFormat:@"shop_info/%@", self.shops_id] withCallback:^(BOOL success, id result){
         if(success) {
-            self.resultArray = (NSArray *)result;
-            NSDictionary *dic = [resultArray objectAtIndex:0];
+            NSDictionary *dic = (NSDictionary *) result;
             self.address.text = [dic objectForKey:@"address"];
             self.number.text = [dic objectForKey:@"phone_number"];
             self.openTime.text = [dic objectForKey:@"opentime"];
             self.closedDate.text = [dic objectForKey:@"closeday"];
             self.budget.text = [dic objectForKey:@"budget"];
             self.numImage = [[dic objectForKey:@"shoppicnum"] intValue];
+            self.point = [[dic objectForKey:@"point"] intValue];
+            self.checkin = [[dic objectForKey:@"checkin"] intValue];            
+            NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];            
+            self.point++;
+            totalPoint++;
+            
+            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.point], @"point", [NSNumber numberWithInteger:totalPoint], @"totalpoint", nil];
+                 
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            [[StackMob stackmob] put:@"shop_info" withId:self.shops_id andArguments:args andCallback:^(BOOL success, id result) {
+                if (success) {
+                           
+                } else {
+
+                }
+            }];
+                       
             
             for (int i = 1; i <= self.numImage; i++) {
                 NSString *imageKey = [NSString stringWithFormat:@"shoppic%d", i];                
@@ -160,6 +177,14 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
             });
         }
     });
+    
+    // Making shop Image corner rounding
+    mainPhoto.layer.cornerRadius = 8;
+    mainPhoto.layer.borderColor = [[UIColor darkGrayColor]CGColor];
+    mainPhoto.layer.borderWidth = 1.0f;
+    mainPhoto.layer.masksToBounds = YES;
+    
+    
 }
 
 - (void)viewDidUnload
@@ -237,6 +262,7 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     [shopPicScrollView release];
     [menuInfoTextView release];    
     [discountTextVIew release];
+    [super dealloc];
 }
 
 #pragma mark - Button Methods

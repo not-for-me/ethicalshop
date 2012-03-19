@@ -14,7 +14,6 @@
     NSString *photoLink; //이미지 주소
     NSString *summary; //한줄 설명
     NSInteger shop_type; //가게 분류
-    NSString *count; //현재 광고 노출 횟수
 }
 
 @property (nonatomic, retain) NSString *shops_id;
@@ -22,7 +21,7 @@
 @property (nonatomic, retain) NSString *shop_name;
 @property (nonatomic, retain) NSString *photoLink;
 @property (nonatomic, retain) NSString *summary;
-@property (nonatomic, retain) NSString *count;
 @property (nonatomic) NSInteger shop_type;
+
 
 @end

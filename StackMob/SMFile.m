@@ -34,10 +34,10 @@
 
 - (id)JSON
 {
-    return [NSString stringWithFormat:@"Content-Type: %@\n\
-            Content-Disposition: attachment; filename=%@\n\
-            Content-Transfer-Encoding: %@\n\n\
-            %@",
+    return [NSString stringWithFormat:@"Content-Type: %@\n"
+            "Content-Disposition: attachment; filename=%@\n"
+            "Content-Transfer-Encoding: %@\n\n"
+            "%@",
             self.contentType,
             self.name,
             @"base64",
