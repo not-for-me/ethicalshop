@@ -13,12 +13,14 @@
 @interface SignInViewController : UIViewController
 <UITextFieldDelegate>
 {
+    UIControl *wholeView;
     UITextField *eMailTextField;
     UITextField *passwordTextField;
     UIActivityIndicatorView *spinner;
  
 }
 
+@property (retain, nonatomic) IBOutlet UIControl *wholeView;
 @property (retain, nonatomic) IBOutlet UITextField *eMailTextField;
 @property (retain, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
@@ -29,7 +31,7 @@
 - (IBAction)newAccount:(id)sender;
 - (IBAction)backgroundTab:(id)sender;
 
-
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end

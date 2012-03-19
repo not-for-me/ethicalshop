@@ -12,13 +12,16 @@
 @interface NewAccountViewController : UIViewController
 <UITextFieldDelegate>
 
+@property (retain, nonatomic) IBOutlet UIControl *wholeView;
 @property (retain, nonatomic) IBOutlet UITextField *nickNameTextField;
 @property (retain, nonatomic) IBOutlet UITextField *eMailTextField;
 @property (retain, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (retain, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-- (void)pressedSignUp;
+- (IBAction)backgroundTap:(id)sender;
+- (void)pressedReset;
+- (IBAction)pressedSignUp:(id)sender;
 - (void)pressedCancle;
 
 @end

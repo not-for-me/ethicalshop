@@ -12,6 +12,7 @@
 
 @implementation SignInViewController
 
+@synthesize wholeView;
 @synthesize eMailTextField;
 @synthesize passwordTextField;
 @synthesize spinner;
@@ -48,6 +49,7 @@
     [self setEMailTextField:nil];
     [self setPasswordTextField:nil];
     [self setSpinner:nil];
+    [self setWholeView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -64,6 +66,7 @@
     [eMailTextField release];
     [passwordTextField release];
     [spinner release];
+    [wholeView release];
     [super dealloc];
 }
 
@@ -142,16 +145,48 @@
 {
     [self.eMailTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+    
+    [UIView beginAnimations:@"Display" context:nil];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationDelegate:self];
+    CGRect frame = wholeView.frame;
+    frame.origin.y = 0;
+    
+    wholeView.frame = frame;
+    [UIView commitAnimations];
 }
 
-
+#pragma mark UITextFieldDelegate implementation
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
+    [UIView beginAnimations:@"Display" context:nil];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationDelegate:self];
+    CGRect frame = wholeView.frame;
+    if( textField == eMailTextField ){
+        frame.origin.y = -35;
+    } else if( textField == passwordTextField ){
+        frame.origin.y = -35;
+    }
+    wholeView.frame = frame;
+    [UIView commitAnimations];
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField 
 {
     if (textField == eMailTextField) 
         [passwordTextField becomeFirstResponder]; 
-    else if (textField == passwordTextField)
-        [passwordTextField resignFirstResponder];  
+    else if (textField == passwordTextField) {
+        [passwordTextField resignFirstResponder]; 
+        [UIView beginAnimations:@"Display" context:nil];
+        [UIView setAnimationDuration:.5];
+        [UIView setAnimationDelegate:self];
+        CGRect frame = wholeView.frame;
+        frame.origin.y = 0;
+
+        wholeView.frame = frame;
+        [UIView commitAnimations];
+    }
     return YES;
 }
 

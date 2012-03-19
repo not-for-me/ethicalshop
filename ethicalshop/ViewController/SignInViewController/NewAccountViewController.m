@@ -13,6 +13,7 @@
 
 @implementation NewAccountViewController
 
+@synthesize wholeView;
 @synthesize nickNameTextField;
 @synthesize eMailTextField;
 @synthesize passwordTextField;
@@ -30,7 +31,7 @@
         UIBarButtonItem *cancleButton = [[UIBarButtonItem alloc] initWithTitle:@"취소" style:UIBarButtonItemStylePlain target:self action:@selector(pressedCancle)];
         self.navigationItem.LeftBarButtonItem = cancleButton;
         
-        UIBarButtonItem *signUpButton = [[UIBarButtonItem alloc] initWithTitle:@"가입" style:UIBarButtonItemStylePlain target:self action:@selector(pressedSignUp)];
+        UIBarButtonItem *signUpButton = [[UIBarButtonItem alloc] initWithTitle:@"리셋" style:UIBarButtonItemStylePlain target:self action:@selector(pressedReset)];
         self.navigationItem.rightBarButtonItem = signUpButton;
         [signUpButton release];
         [cancleButton release];
@@ -53,7 +54,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.nickNameTextField becomeFirstResponder];
 }
 
 - (void)viewDidUnload
@@ -63,6 +63,7 @@
     [self setPasswordTextField:nil];
     [self setConfirmPasswordTextField:nil];
     [self setSpinner:nil];
+    [self setWholeView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -81,12 +82,37 @@
     [passwordTextField release];
     [confirmPasswordTextField release];
     [spinner release];
+    [wholeView release];
     [super dealloc];
 }
 
 #pragma mark - Button Methods
 
-- (void)pressedSignUp
+- (IBAction)backgroundTap:(id)sender {
+    [nickNameTextField resignFirstResponder];
+    [eMailTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder];
+    [confirmPasswordTextField resignFirstResponder];
+    
+    [UIView beginAnimations:@"Display" context:nil];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationDelegate:self];
+    CGRect frame = wholeView.frame;
+    frame.origin.y = 0;
+    
+    wholeView.frame = frame;
+    [UIView commitAnimations];
+}
+
+- (void)pressedReset
+{
+    nickNameTextField.text = @"";
+    eMailTextField.text = @"";
+    passwordTextField.text = @"";
+    confirmPasswordTextField.text = @"";
+}
+
+- (IBAction)pressedSignUp:(id)sender
 {    
     if ( [passwordTextField.text isEqualToString:confirmPasswordTextField.text] ) {
         NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:nickNameTextField.text, @"nickname", eMailTextField.text, @"email", passwordTextField.text, @"password", nil];
@@ -132,7 +158,28 @@
 }
 
 
-
+#pragma mark UITextFieldDelegate implementation
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
+    [UIView beginAnimations:@"Display" context:nil];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationDelegate:self];
+    CGRect frame = wholeView.frame;
+    if( textField == nickNameTextField ){
+        frame.origin.y = -30;
+    } 
+    else if( textField == eMailTextField ){
+        frame.origin.y = -75;
+    }
+    else if( textField == passwordTextField ){
+        frame.origin.y = -120;
+    }
+    else if( textField == confirmPasswordTextField ){
+        frame.origin.y = -120;
+    }
+    wholeView.frame = frame;
+    [UIView commitAnimations];
+    return YES;
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField 
 {
@@ -142,8 +189,17 @@
         [passwordTextField becomeFirstResponder];
     else if (textField == passwordTextField)
         [confirmPasswordTextField becomeFirstResponder];
-    else if(textField == confirmPasswordTextField)
+    else if(textField == confirmPasswordTextField) {
         [confirmPasswordTextField resignFirstResponder];
+        [UIView beginAnimations:@"Display" context:nil];
+        [UIView setAnimationDuration:.5];
+        [UIView setAnimationDelegate:self];
+        CGRect frame = wholeView.frame;
+        frame.origin.y = 0;        
+        wholeView.frame = frame;
+        [UIView commitAnimations];
+    }    
+ 
     
     return YES;
 }
