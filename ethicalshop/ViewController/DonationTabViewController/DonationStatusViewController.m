@@ -108,7 +108,7 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;    
         
         
-        [[StackMob stackmob] get:@"shop_info" withCallback:^(BOOL success, id result) {
+        [[StackMob stackmob] get:@"user" withCallback:^(BOOL success, id result) {
             if(success) {
                 NSArray *resultSet = (NSArray *)result;
                 int i = 0;
@@ -124,6 +124,7 @@
                 StackMobQuery *q = [StackMobQuery query];
                 [q orderByField:@"totalpoint" withDirection:SMOrderDescending];
                 [q setSelectionToFields:[NSArray arrayWithObjects:@"nickname", @"totalpoint", nil]];
+                [q setRangeStart:0 andEnd:9];
                 // perform the query and handle the results
                 [[StackMob stackmob] get:@"user" withQuery:q andCallback:^(BOOL success, id result) {
                     if (success) {

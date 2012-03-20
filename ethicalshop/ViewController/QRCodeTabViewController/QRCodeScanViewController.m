@@ -13,6 +13,8 @@
 @synthesize resultImage;
 @synthesize qrLabel;
 @synthesize resultText;
+@synthesize locationManager;
+@synthesize startPoint;
 
 #pragma mark - View Initialize
 
@@ -72,7 +74,13 @@
 
 // 스캔 버튼을 누르면 다시 QR 코드를 찍을 수 있도록 안내
 - (IBAction) scanButtonTapped
-{
+{    
+    locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = self;
+	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	locationManager.distanceFilter = kCLDistanceFilterNone;
+	[locationManager startUpdatingLocation];
+    
 	// ADD: present a barcode reader that scans from the camera feed
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
@@ -136,79 +144,102 @@
         shop_id = [resultText substringWithRange:NSMakeRange(13, 2)];
     else
         shop_id = [resultText substringWithRange:NSMakeRange(14, 1)];
-  
-
+    
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    [[StackMob stackmob] get:[NSString stringWithFormat:@"shop_info/%@", shop_id] withCallback:^(BOOL success, id result){
+    //상점의 거리를 먼저 확인 함
+    StackMobQuery *q = [StackMobQuery query];
+    [q field:@"shop_info_id" mustEqualValue:shop_id];
+    [[StackMob stackmob] get:@"shop_info" withQuery:q andCallback:^(BOOL success, id result){
         if(success) {
-            NSDictionary *dic = (NSDictionary *) result;
-            self.qrLabel.text = [dic objectForKey:@"name"];
-            NSInteger checkin = [[dic objectForKey:@"checkin"] intValue];
-            checkin++;
-            NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
-            totalPoint += 5;
+            NSArray *resultArray = (NSArray *)result;
+            NSDictionary *dic = (NSDictionary *) [resultArray objectAtIndex:0];            
+            NSDictionary *loc = [dic objectForKey:@"location"];
             
-            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:checkin], @"checkin", [NSNumber numberWithInteger:totalPoint], @"totalpoint",nil];                        
-            [[StackMob stackmob] put:@"shop_info" withId:shop_id andArguments:args andCallback:^(BOOL success, id result) {
-                if (success) {
-                } 
-                else {
-                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"사용자 정보 저장 오류" message:@"가맹점 정보를 아이폰에 업데이트 하지 못하였습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
-                    [alert show];
-                    [alert release];
-                }
-            }];
+            CLLocation *shopLocation = [[CLLocation alloc] initWithLatitude:[[loc objectForKey:@"lat"] doubleValue] longitude:[[loc objectForKey:@"lon"] doubleValue]];
             
+            CLLocationDistance distance = [startPoint distanceFromLocation:shopLocation];
+            [shopLocation release];
             
-            [[StackMob stackmob] get:[NSString stringWithFormat:@"user/%@",[[UserObject sharedUserData] eMail]]  withCallback:^(BOOL success, id result){
-                if(success){
-                    NSDictionary *dic = (NSDictionary *) result;
-                    NSInteger checkin = [[dic objectForKey:@"checkin"] intValue];
-                    checkin++;                   
-                    NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
-                    totalPoint += 5;
-                    
-                    NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:checkin], @"checkin", [NSNumber numberWithInteger:totalPoint], @"totalpoint",nil]; 
-
-
-                    [[StackMob stackmob] put:@"user" withId:[[UserObject sharedUserData] eMail] andArguments:args andCallback:^(BOOL success, id result) {
-                        if (success) {
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;                    
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"체크인 완료" message:[NSString stringWithFormat:@"%@을 방문해 주셔서 감사합니다.", self.qrLabel.text] delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
-                            [alert show];
-                            [alert release];
-                        } else {
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"사용자 정보 저장 오류" message:@"사용자 정보를 아이폰에 업데이트 하지 못하였습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
-                            [alert show];
-                            [alert release];
-                        }
-                    }];
-                }
-                
-            }];
+            // 거리가 일정 범위 내에 들어 옴
+            if(distance <= 50.0) {
+                StackMobQuery *q = [StackMobQuery query];
+                [q setSelectionToFields:[NSArray arrayWithObjects:@"checkin", @"name", @"totalpoint", nil]];
+                [[StackMob stackmob] get:[NSString stringWithFormat:@"shop_info/%@", shop_id] withQuery:q andCallback:^(BOOL success, id result){
+                    if(success) {
+                        NSDictionary *dic = (NSDictionary *) result;
+                        self.qrLabel.text = [dic objectForKey:@"name"];                        
+                        NSInteger checkin = [[dic objectForKey:@"checkin"] intValue];
+                        checkin++;
+                        NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
+                        totalPoint += 20;
+                        
+                        
+                        NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:checkin], @"checkin", [NSNumber numberWithInteger:totalPoint], @"totalpoint",nil];                        
+                        [[StackMob stackmob] put:@"shop_info" withId:shop_id andArguments:args andCallback:^(BOOL success, id result) {
+                            if (success) {
+                                
+                                [StackMobCustomSDK checkDailyCheckInUp:shop_id];
+                                
+                            } 
+                            else {
+                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"사용자 정보 저장 오류" message:@"가맹점 정보를 아이폰에 업데이트 하지 못하였습니다. 한번 더 체크인 해주세요 ^^" delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                                [alert show];
+                                [alert release];
+                            }
+                        }];
+                        
+                        
+                        
+                    }
+                    else{                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QR code 오류" message:@"해당 QR code는 유효하지 않습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                        [alert show];
+                        [alert release];
+                        self.qrLabel.text = @"";
+                        return;
+                    }
+                }];
+            }
+            else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"체크인 오류" message:@"QR code는 가맹점에서 찍을 때만 유효합니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+                self.qrLabel.text = @"";
+                return;
+            }
         }
-        else{
-            [reader dismissModalViewControllerAnimated: YES];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"QR code 오류" message:@"해당 QR code는 유효하지 않습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"네트워크 오류" message:@"네트워크 장애로 정상적으로 위치정보를 수집하지 못하였습니다. 다시 한번 체크인 해주세요 ^^." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
             [alert show];
             [alert release];
             self.qrLabel.text = @"";
             return;
+            
         }
-        
     }];
-    
-    
-    
-    // EXAMPLE: do something useful with the barcode image
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        // EXAMPLE: do something useful with the barcode image
     resultImage.image =
 	[info objectForKey: UIImagePickerControllerOriginalImage];
 	
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissModalViewControllerAnimated: YES];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation 
+{	
+    if (startPoint == nil) {
+        self.startPoint = newLocation;
+    }
+    
+    [locationManager stopUpdatingLocation];
 }
 
 

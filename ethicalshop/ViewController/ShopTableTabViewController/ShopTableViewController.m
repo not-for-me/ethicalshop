@@ -11,6 +11,7 @@
 #import "ShopsMapViewController.h"
 #import "ShopDetailInfoViewController.h"
 #import "StackMob.h"
+#import "StackMobCustomSDK.h"
 #import "ShopCellInfo.h"
 #import <QuartzCore/QuartzCore.h> 
 
@@ -412,43 +413,13 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
     
     
-    
+    [spinner startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    
-    [[StackMob stackmob] get:[NSString stringWithFormat:@"user/%@", [[UserObject sharedUserData] eMail]] withCallback:^(BOOL success, id result){
-        if(success) {
-            
-            NSDictionary *dic = (NSDictionary *) result;
-            NSInteger point = [[dic objectForKey:@"point"] intValue];
-            point++;
-            NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];
-            totalPoint++;
-            NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:point], @"point", [NSNumber numberWithInteger:totalPoint], @"totalpoint", nil];
-            
-            [[StackMob stackmob] put:@"user" withId:[[UserObject sharedUserData] eMail] andArguments:args andCallback:^(BOOL success, id result) {
-                if (success) {
-                    [spinner stopAnimating];
-                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                } else {
-                    [spinner stopAnimating];
-                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                }
-            }];            
-            
-            /*
-             NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
-             [dateFormat setDateFormat:@"yyyy-MM-dd"];
-             NSString *todayDate = [dateFormat stringFromDate:[NSDate date]];
-             NSDictionary *args1 = [NSDictionary dictionaryWithObjectsAndKeys:todayDate,@"date",shopInfo.shops_id, @"shop_id", @"point", @"type", nil];
-             
-             [[StackMob stackmob] post:@"user" withId:[[UserObject sharedUserData] eMail] andField:@"point_history" andArguments:args1 andCallback:^(BOOL success, id result) {
-             
-             }];
-             */
-        }
-    }];
-    
+    [StackMobCustomSDK checkDailyPointUp:shopInfo.shops_id];
+         
+    [spinner stopAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     [detailViewController release];
 }

@@ -19,10 +19,10 @@
 @synthesize shop_type;
 @synthesize numImage;
 @synthesize photoImage;
-@synthesize resultArray;
 @synthesize shopPicArray;
 @synthesize point;
 @synthesize checkin;
+@synthesize shopLocation;
 
 @synthesize nameLabel;
 @synthesize mainPhoto;
@@ -40,7 +40,6 @@
 
 @synthesize openTime;
 @synthesize closedDate;
-@synthesize budget;
 @synthesize basicView;
 @synthesize menuView;
 @synthesize discountView;
@@ -102,17 +101,22 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     
     [spinner1 startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [[StackMob stackmob] get:[NSString stringWithFormat:@"shop_info/%@", self.shops_id] withCallback:^(BOOL success, id result){
+    
+    StackMobQuery *q = [StackMobQuery query];
+    [q field:@"shop_info_id" mustEqualValue:self.shops_id];
+    [q setSelectionToFields: [NSArray arrayWithObjects:@"address", @"phone_number", @"opentime", @"closeday", @"budget", @"shoppicnum", @"point", @"checkin", @"location", @"totalpoint",nil]];
+    [[StackMob stackmob] get:@"shop_info" withQuery:q andCallback:^(BOOL success, id result){
         if(success) {
-            NSDictionary *dic = (NSDictionary *) result;
+            NSArray *resultArray = (NSArray *) result;
+            NSDictionary *dic = (NSDictionary *) [resultArray objectAtIndex:0];
             self.address.text = [dic objectForKey:@"address"];
             self.number.text = [dic objectForKey:@"phone_number"];
             self.openTime.text = [dic objectForKey:@"opentime"];
-            self.closedDate.text = [dic objectForKey:@"closeday"];
-            self.budget.text = [dic objectForKey:@"budget"];
+            self.closedDate.text = [dic objectForKey:@"closeday"];            
             self.numImage = [[dic objectForKey:@"shoppicnum"] intValue];
             self.point = [[dic objectForKey:@"point"] intValue];
-            self.checkin = [[dic objectForKey:@"checkin"] intValue];            
+            self.checkin = [[dic objectForKey:@"checkin"] intValue];   
+            self.shopLocation =[dic objectForKey:@"location"];
             NSInteger totalPoint = [[dic objectForKey:@"totalpoint"] intValue];            
             self.point++;
             totalPoint++;
@@ -189,11 +193,12 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
 
 - (void)viewDidUnload
 {
+    [self setShopLocation:nil];
+    
     self.shop_name=nil;
     self.photoLink=nil;
     self.shops_id=nil;
     self.photoImage=nil;
-    [self setResultArray:nil];
     [self setShopPicArray:nil];
     self.nameLabel=nil;
     self.mainPhoto=nil;
@@ -209,7 +214,6 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     [self setSpinner1:nil];
     [self setOpenTime:nil];
     [self setClosedDate:nil];
-    [self setBudget:nil];
     [self setBasicView:nil];
     [self setMenuView:nil];   
     [self setDiscountView:nil];
@@ -235,13 +239,14 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     [photoLink release];
     [shops_id release];
     [photoImage release];
-    [resultArray release];
     [shopPicArray release];
     
     [nameLabel release];
     [mainPhoto release];
     [address release];
     [number release];
+    
+    [shopLocation release];
     
     [basicInfoTab release];
     [MenuInfoTab release];
@@ -254,7 +259,6 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     
     [openTime release];
     [closedDate release];
-    [budget release];    
     [basicView release];
     [menuView release];
     [discountView release];
@@ -299,7 +303,9 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
 - (IBAction)pressedMap
 {
     DetailMapViewController *detailMapViewController = [[DetailMapViewController alloc] initWithNibName:@"DetailMapViewController" bundle:nil];
-    detailMapViewController.location = [resultArray objectAtIndex:0];
+    detailMapViewController.location = self.shopLocation;
+    detailMapViewController.shopName = self.shop_name;
+    detailMapViewController.shopAddress = self.address.text;
     [self.navigationController pushViewController:detailMapViewController animated:YES];
     [detailMapViewController release];
 }
@@ -318,8 +324,8 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 1) {
-        NSDictionary *dic = [resultArray objectAtIndex:0];
-        NSString *phoneNum = [[NSString alloc] initWithFormat:@"tel://%@",[dic objectForKey:@"phone_number"]];
+        
+        NSString *phoneNum = [[NSString alloc] initWithFormat:@"tel://%@", self.number.text];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNum]];
         [phoneNum release];
     }

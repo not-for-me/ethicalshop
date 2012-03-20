@@ -24,6 +24,7 @@
 		CF55F327150CAA84006D236B /* ES_donation_img_ranking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF55F31F150CAA83006D236B /* ES_donation_img_ranking@2x.png */; };
 		CF55F328150CAA84006D236B /* ES_donation_img_we.png in Resources */ = {isa = PBXBuildFile; fileRef = CF55F320150CAA83006D236B /* ES_donation_img_we.png */; };
 		CF55F329150CAA84006D236B /* ES_donation_img_we@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF55F321150CAA84006D236B /* ES_donation_img_we@2x.png */; };
+		CF6B9F9015179B1700632013 /* StackMobCustomSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6B9F8F15179B1700632013 /* StackMobCustomSDK.m */; };
 		CFC645FA15173E5300D8D38C /* ES_register_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC645F815173E5200D8D38C /* ES_register_bt.png */; };
 		CFC645FB15173E5300D8D38C /* ES_register_bt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC645F915173E5300D8D38C /* ES_register_bt@2x.png */; };
 		CFD8908A14E3C49A000343C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD8908914E3C49A000343C5 /* UIKit.framework */; };
@@ -39,7 +40,6 @@
 		CFD8912614E3C4D8000343C5 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = CFD8910414E3C4D8000343C5 /* zbar-help.html */; };
 		CFD8912714E3C4D8000343C5 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD8910514E3C4D8000343C5 /* zbar-helpicons.png */; };
 		CFD8912814E3C4D8000343C5 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = CFD8910614E3C4D8000343C5 /* zbar-samples.png */; };
-		CFD8919D14E3C4E6000343C5 /* ShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8912B14E3C4E6000343C5 /* ShopAnnotation.m */; };
 		CFD8919E14E3C4E6000343C5 /* ShopCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8912D14E3C4E6000343C5 /* ShopCellInfo.m */; };
 		CFD8919F14E3C4E6000343C5 /* ShopTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8912F14E3C4E6000343C5 /* ShopTableCell.m */; };
 		CFD891A014E3C4E6000343C5 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD8913114E3C4E6000343C5 /* UserData.m */; };
@@ -178,6 +178,8 @@
 		CF55F31F150CAA83006D236B /* ES_donation_img_ranking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_donation_img_ranking@2x.png"; sourceTree = "<group>"; };
 		CF55F320150CAA83006D236B /* ES_donation_img_we.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ES_donation_img_we.png; sourceTree = "<group>"; };
 		CF55F321150CAA84006D236B /* ES_donation_img_we@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_donation_img_we@2x.png"; sourceTree = "<group>"; };
+		CF6B9F8E15179B1700632013 /* StackMobCustomSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackMobCustomSDK.h; sourceTree = "<group>"; };
+		CF6B9F8F15179B1700632013 /* StackMobCustomSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackMobCustomSDK.m; sourceTree = "<group>"; };
 		CFC645F815173E5200D8D38C /* ES_register_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ES_register_bt.png; sourceTree = "<group>"; };
 		CFC645F915173E5300D8D38C /* ES_register_bt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_register_bt@2x.png"; sourceTree = "<group>"; };
 		CFD8908514E3C49A000343C5 /* ethicalshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ethicalshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,8 +219,6 @@
 		CFD8910414E3C4D8000343C5 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		CFD8910514E3C4D8000343C5 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		CFD8910614E3C4D8000343C5 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
-		CFD8912A14E3C4E6000343C5 /* ShopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAnnotation.h; sourceTree = "<group>"; };
-		CFD8912B14E3C4E6000343C5 /* ShopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAnnotation.m; sourceTree = "<group>"; };
 		CFD8912C14E3C4E6000343C5 /* ShopCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCellInfo.h; sourceTree = "<group>"; };
 		CFD8912D14E3C4E6000343C5 /* ShopCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCellInfo.m; sourceTree = "<group>"; };
 		CFD8912E14E3C4E6000343C5 /* ShopTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableCell.h; sourceTree = "<group>"; };
@@ -299,10 +299,10 @@
 		CFD8919914E3C4E6000343C5 /* ShopTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTableViewController.xib; sourceTree = "<group>"; };
 		CFD8919B14E3C4E6000343C5 /* NewAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAccountViewController.xib; sourceTree = "<group>"; };
 		CFD8919C14E3C4E6000343C5 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
-		CFD891EC14E3C51F000343C5 /* IconDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconDownloader.h; sourceTree = "<group>"; };
-		CFD891ED14E3C51F000343C5 /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
-		CFD891EE14E3C51F000343C5 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkReachability.h; sourceTree = "<group>"; };
-		CFD891EF14E3C51F000343C5 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkReachability.m; sourceTree = "<group>"; };
+		CFD891EC14E3C51F000343C5 /* IconDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IconDownloader.h; path = ../IconDownloader.h; sourceTree = "<group>"; };
+		CFD891ED14E3C51F000343C5 /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IconDownloader.m; path = ../IconDownloader.m; sourceTree = "<group>"; };
+		CFD891EE14E3C51F000343C5 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkReachability.h; path = ethicalshop/NetworkReachability.h; sourceTree = SOURCE_ROOT; };
+		CFD891EF14E3C51F000343C5 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkReachability.m; path = ethicalshop/NetworkReachability.m; sourceTree = SOURCE_ROOT; };
 		CFD891F314E3C58C000343C5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = /Users/jwj0831/Documents/development/iOS/ethicalshop/ethicalshop/ko.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
 		CFD891F814E3C5F7000343C5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CFD891F914E3C5F7000343C5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -434,6 +434,19 @@
 			path = Donation;
 			sourceTree = "<group>";
 		};
+		CF6B9F8D15179ADC00632013 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CFD891EC14E3C51F000343C5 /* IconDownloader.h */,
+				CFD891ED14E3C51F000343C5 /* IconDownloader.m */,
+				CFD891EE14E3C51F000343C5 /* NetworkReachability.h */,
+				CFD891EF14E3C51F000343C5 /* NetworkReachability.m */,
+				CF6B9F8E15179B1700632013 /* StackMobCustomSDK.h */,
+				CF6B9F8F15179B1700632013 /* StackMobCustomSDK.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		CFD8907A14E3C49A000343C5 = {
 			isa = PBXGroup;
 			children = (
@@ -477,10 +490,7 @@
 		CFD8908F14E3C49A000343C5 /* ethicalshop */ = {
 			isa = PBXGroup;
 			children = (
-				CFD891EC14E3C51F000343C5 /* IconDownloader.h */,
-				CFD891ED14E3C51F000343C5 /* IconDownloader.m */,
-				CFD891EE14E3C51F000343C5 /* NetworkReachability.h */,
-				CFD891EF14E3C51F000343C5 /* NetworkReachability.m */,
+				CF6B9F8D15179ADC00632013 /* Network */,
 				CFD8912914E3C4E6000343C5 /* DataModel */,
 				CFD8913214E3C4E6000343C5 /* Images */,
 				CFD8916614E3C4E6000343C5 /* ViewController */,
@@ -570,8 +580,6 @@
 		CFD8912914E3C4E6000343C5 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				CFD8912A14E3C4E6000343C5 /* ShopAnnotation.h */,
-				CFD8912B14E3C4E6000343C5 /* ShopAnnotation.m */,
 				CFD8912C14E3C4E6000343C5 /* ShopCellInfo.h */,
 				CFD8912D14E3C4E6000343C5 /* ShopCellInfo.m */,
 				CFD8912E14E3C4E6000343C5 /* ShopTableCell.h */,
@@ -1091,7 +1099,6 @@
 			files = (
 				CFD8909614E3C49A000343C5 /* main.m in Sources */,
 				CFD8909A14E3C49A000343C5 /* AppDelegate.m in Sources */,
-				CFD8919D14E3C4E6000343C5 /* ShopAnnotation.m in Sources */,
 				CFD8919E14E3C4E6000343C5 /* ShopCellInfo.m in Sources */,
 				CFD8919F14E3C4E6000343C5 /* ShopTableCell.m in Sources */,
 				CFD891A014E3C4E6000343C5 /* UserData.m in Sources */,
@@ -1140,6 +1147,7 @@
 				CFFA1BB71514D36A006AE50E /* StackMobSession.m in Sources */,
 				CFFA1BB81514D36A006AE50E /* NSData+Base64.m in Sources */,
 				CFFA1BB91514D36A006AE50E /* NSData+JSON.m in Sources */,
+				CF6B9F9015179B1700632013 /* StackMobCustomSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

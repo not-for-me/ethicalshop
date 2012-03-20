@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11C74</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.23</string>
-		<string key="IBDocument.HIToolboxVersion">567.00</string>
+		<int key="IBDocument.SystemTarget">1296</int>
+		<string key="IBDocument.SystemVersion">11D50b</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.AppKitVersion">1138.32</string>
+		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1179</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUITextView</string>
@@ -66,7 +66,60 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">착한 가게와 함께 꿈을 나눌 주인공을 찾습니다!  저희는 이러저러해서 이러쿵 저러쿵 하여 이와 같은 일을 준비 중에 있으며 앞으로 이렇게 저렇게 일을 진행하고자 합니다.!</string>
+						<object class="NSMutableString" key="IBUIText">
+							<bytes key="NS.bytes">7LSI7L2c66Cb67CV7Iqk64qUIDIwMTHrhYQg6rWQ64K0IOyghOyCsOyghOyekOqzte2Vmeu2gCDsobjs
+l4Ug7ZSE66Gc7KCd7Yq466GcIOyLnOyeke2VmOyXrCDshozshZzquLDrtoDrnbzripQg7JWE7J207YWc
+7Jy866GcIOywveyXheydhCDspIDruYTspJHsnbgg7JiI67mEIOywveyXheq4sOyXheyeheuLiOuLpC4K
+CuyggO2drOuKlCAyMDEz64WEIOyEnOyauOyXkOyEnCDsoJXsi50g7ISc67mE7Iqk66W8IOuqqe2RnOuh
+nCDquLDtmo0t6rCc67Cc7JeQIOyehO2VmOqzoCDsnojsnLzrqbAsIOyXrOufrOu2hOydtCDsgqzsmqnt
+lZjsi5zripQg67O4ICLssKntlZwg6rCA6rKMIiDslbHsnYAg7KCA7Z2s6rCAIOqzteyLneyggeycvOuh
+nCDshJzruYTsiqQg7ZWgIOygnO2SiOydhCDtlZzrj5nrjIDtlZnqtZDsnZgg7IOB7Zmp7JeQIOunnuy2
+lOyWtCDqsJzrsJztlZwg6rKD7J6F64uI64ukLgoK7LSI7L2c66CbIOuwleyKpOyXkOyEnOuKlCDshLjs
+g4Hqs7wg64uk66W4IOuwqeuyleycvOuhnCDsgqztmozrpbwg67OA7ZmU7Iuc7YKk66Ck64qUIOydmOyn
+gOyZgCDsoJXsl7TsnYQg6rCA7KeEIOunjuydgCDrtoTrk6Tqs7wg7J207JW86riw7ZWY6rOgIOyLtuyK
+teuLiOuLpC4KCi0g7KG47JeF7J2EIOyVnuuRkOqzoCDssL3sl4Xsl5Ag6rSA7Ius7J20IOyeiOqxsOuC
+mCDsgqztmozsoIEg6riw7JeFLCDshozshZwg67Kk7LKYIOuTseyXkCDqtIDsi6wg7J6I64qUIOu2hAot
+IOuzuCDssKntlZwg6rCA6rKMIOyEnOu5hOyKpCDtlITroZzsoJ3tirjrpbwg642U7JqxIOupi+yngOqy
+jCDrp4zrk6TslrQg7KO87IukIOydmO2WpeydhCDqsJbqs6Ag6rOE7IugIOu2hAotIOydtCDsgqztmozr
+pbwg7JWE66aE64u16rKMIOunjOuTpOyWtCDrgpjqsIDripQg7Leo7KeA7JeQIOqzteqwkO2VmOqzoCDt
+lajqu5gg6r+I7J2EIOqzteycoO2VmOqzoCDsi7bsnLzsi6Ag67aECi0g7LSI7L2c66CbIOuwleyKpOyd
+mCDsp4DtlqXsoJDqs7wg6rCZ7J2AIOyVhOydtO2FnOydhCDqsJbqs6Ag7J6I7KeA66eMIOqwnOuwnCDr
+sI8g7Iuk7ZaJ7ZWgIOuPmeujjOqwgCDtlYTsmpTtlZjsi6Ag67aECgrrk7Eg7Ja065akIOyDneqwgeyd
+hCDqsJbqs6Ag6rOE7Iuc642U652864+EIO2VqOq7mCDsnbTslbzquLDtlZjqs6AsIOu5hOyghOydhCDq
+s7XsnKDtlaAg7IiYIOyeiOyKteuLiOuLpC4KCuq0gOyLrOyeiOuKlCDrtoTsnYAg7JWE656YIOyXsOud
+veyymOulvCDthrXtlbQg7Jew6529IOyjvOyLnOq4sOulvCDquLDrjIDtlanri4jri6QuCgpqd2owODMx
+QGdtYWlsLmNvbSAo7KGw7Jqw7KeEKQoK7KCA7Z2sIOyCrOyXheydtCDqtoHquIjtlZjsi6Ag67aE65Ok
+7J2AIOqzhOyGje2VtOyEnCDslYTrnpgg64K07Jqp7J2EIOydveyWtOyjvOyEuOyalCBeXgoKCu2YhOye
+rCDssL3sl4XtjIAg64yA7ZGc6rCAIOykkeyGjOq4sOyXheyyreyXkOyEnCDso7zqtIDtlZjripQg7LKt
+64WE7LC97JeF7IKs6rSA7ZWZ6rWQIOyCrOyXheyXkCDtlanqsqntlZjsl6wgMjAxMuuFhCDtlZztlbQg
+NTAwMOunjOybkOydmCDsi5zsoJztkogg7KCc7J6RIOyngOybkCDruYTsmqnqs7wg67Kk7LKY7LC97JeF
+IOq1kOycoeydhCDrsJvsnYQg7JiI7KCV7J2066mwIDIwMTPrhYTsl5Ag7ISc7Jq47JeQ7IScIOyCrOyX
+heydhCDrs7jqsqnsoIHsnLzroZwg7KeE7ZaJ7ZWgIOyYiOygleyeheuLiOuLpC4KCuyggO2drCDtmozs
+gqzsnZgg66qF7Lmt7J2AICLtj6zroIjsiqTtirgg6rKA7ZSEIuydmCDsmIHtmZTsl5DshJwg66qo7Yuw
+67iM66W8IOyWu+yXiOyKteuLiOuLpC4KCkxpZmUgaXMgYSBib3ggb2YgY2hvY29sYXRlcywgRm9ycmVz
+dC4gWW91IG5ldmVyIGtub3cgd2hhdCB5b3UncmUgZ29ubmEgZ2V0Lgoo7J247IOd7J2AIOy0iOy9nOum
+vyDsg4HsnpDsmYAg6rCZ64uo64ukLCDslpjslbwuIOyWtOuWpCDstIjsvZzrpr/snYQg7KeR7Ja0IOuT
+pOyngCDrqqjrpbjri6jri6QuKQoK7LSI7L2c66CbIOuwleyKpOudvOuKlCDrqoXsua3sl5Ag66eO7J2A
+IOyyoO2VmeydhCDri7TsnYAg6rKD64+EIOyVhOuLiOqzoCwg7Y+s66CI7Iqk7Yq4IOqygO2UhCDsmIHt
+mZTsmYAg6rmK7J2AIOq0gOqzhOqwgCDsnojripQg6rKD64+EIOyVhOuLmeuLiOuLpC4K7J207KCcIOun
+iSDssqsg6rG47J2M7J2EIOuWvOq4sCDsi5zsnpHtlZjsl6wg6rmK7J2AIOyyoO2VmeqzvCDtlbXsi6zq
+sIDsuZjripQg7JWE656Y7JmAIOqwmeyKteuLiOuLpC4KIArsoIDtnazripQg7Jqw66asIOyCrO2ajOyd
+mCDri6zsvaTtlajsnYQg66qo65GQ6rCAIO2VqOq7mCDqs7XsnKDtlaAg7IiYIOyeiOuKlCDslYTrpoTr
+i6TsmrQg7IS47IOB7J2EIOq/iOq+uOuKlCDquLDsl4XsnoXri4jri6QuCuuwleyKpCDslYjsnZgg7LSI
+7L2c66Cb7J2EIOuCmCDtmLzsnpAg64+F7Iud7ZWY64qUIOyCrO2ajOqwgCDslYTri4wg64K0IOydtOyb
+g+qzvCDtlajqu5gg64KY64iMIOyImCDsnojripQg7IS47IOB7J2EIOy2lOq1rO2VqeuLiOuLpC4KSVTr
+nbzripQg64+E6rWs66W8IO2Gte2VmOyXrCDsnbQg7IS47IOB7J2EIOyngOyGjeqwgOuKpe2VnCwg7IOB
+7IOd7ZWY64qULCDslYTrpoTri6TsmrQg7IKs7ZqM66GcIOunjOuTpOq4sCDsnITtlbQg64W466Cl7ZWY
+64qUIOyGjOyFnOuypOyymOulvCDsp4DtlqXtlanri4jri6QuCgoK7LSI7L2c66CbIOuwleyKpOqwgCDq
+sbjslrTsmKgg6ri4IOq3uOumrOqzoCDslZ7snLzroZzsnZgg6rOE7ZqN7J2AIOuLpOydjOqzvCDqsJns
+irXri4jri6QuCgoyMDExLiAxMi4yNiBMQlMgV0VCICYgQVBQIElERUEg64yA7IOBCjIwMTEuIDEyLiBM
+QlPrpbwg7J207Jqp7ZWcIOyCrO2ajOqzte2XjCDslaDtlIzrpqzsvIDsnbTshZggQk0g7Yq57ZeIIOy2
+lOynhCDspJEKMjAxMi4gMy45LiAyMDEy64WEIOygnCAy6riwIOyyreuFhOywveyXheyCrOq0gO2Vmeq1
+kCDsnoXqtZAg67CPIDUwMDDrp4zsm5Ag7KCV67aA7KeA7JuQ6riIIO2ajeuTnQoyMDEyLiAzLiAyNi4g
+7ZWc64+Z64yAIOuCtCDssKntlZwg6rCA6rKMIOyVsSDrprTrpqzspogKMjAxMi4gNuyblCDspJEg67KV
+7J24IOyEpOumvSDstpTsp4QKMjAxMi4gMTHsm5Qg7LWc7KKFIOyCrOyXhSDslYTsnbTthZwg7Iuc7KCc
+7ZKIIOygnOyekQoyMDEzLiAx7JuUIOyEnOyauCDshJzruYTsiqQg66a066as7KaIIOuqqe2RnAo</bytes>
+						</object>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -183,12 +236,16 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1296" key="NS.object.0"/>
+		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">ES_all_bg_1.jpg</string>
 			<string key="NS.object.0">{320, 480}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>
 </archive>

@@ -132,6 +132,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             else {
+                cell.textLabel.textAlignment = UITextAlignmentLeft;
                 cell.textLabel.text = [[UserObject sharedUserData] nickName];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }

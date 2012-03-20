@@ -7,7 +7,6 @@
 //
 
 #import "ShopsMapViewController.h"
-#import "ShopAnnotation.h"
 #import "StackMob.h"
 
 @implementation ShopsMapViewController
@@ -56,13 +55,14 @@
                 NSDictionary *dic = [resultArray objectAtIndex:i];
                 NSDictionary *locationDic =[[NSDictionary alloc] initWithDictionary:[dic objectForKey:@"location"]];
 
-                ShopAnnotation *shopAnnotation = [[ShopAnnotation alloc] init];	
+                	
+                MKPointAnnotation *shopAnnotation = [[MKPointAnnotation alloc] init];
                 CLLocationCoordinate2D center;
                 center.latitude = [[locationDic objectForKey:@"lat"] doubleValue];
                 center.longitude = [[locationDic objectForKey:@"lon"] doubleValue];
                                                
                 shopAnnotation.Title = [dic objectForKey:@"name"];
-                shopAnnotation.subTitle = [dic objectForKey:@"address"];                
+                shopAnnotation.subtitle = [dic objectForKey:@"address"];                
                 shopAnnotation.coordinate = center;
                 [self.myMapView addAnnotation:shopAnnotation];
 
@@ -75,7 +75,6 @@
             NSLog(@"Failed");
     }];
 
-    
     [super viewDidLoad];
 }
 
@@ -85,7 +84,6 @@
     [self setLocationManager:nil];
     [self setStartPoint:nil];
     [self setResultArray:nil];
-    [self setStartPoint:nil];
     [self setMyMapView:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

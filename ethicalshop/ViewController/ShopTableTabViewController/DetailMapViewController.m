@@ -7,12 +7,13 @@
 //
 
 #import "DetailMapViewController.h"
-#import "ShopAnnotation.h"
 
 @implementation DetailMapViewController
 
 @synthesize myMapView;
 @synthesize location;
+@synthesize shopName;
+@synthesize shopAddress;
 
 #pragma mark - View Initialize
 
@@ -39,30 +40,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"상점위치";
-    NSDictionary *dic = [self.location objectForKey:@"location"];
-    NSString *lon = [dic objectForKey:@"lon"];
-    NSString *lat = [dic objectForKey:@"lat"];
-    
-    CLLocationCoordinate2D center;
-    center.latitude = [lat doubleValue];
-    center.longitude = [lon doubleValue];
+    self.title = @"상점위치";    
     
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     span.latitudeDelta = 0.01;
     span.longitudeDelta = 0.01;
+           
+    MKPointAnnotation *shopAnnotation = [[MKPointAnnotation alloc] init];
+    
+    CLLocationCoordinate2D center;
+    center.latitude = [[self.location objectForKey:@"lat"] doubleValue];
+    center.longitude = [[self.location objectForKey:@"lon"] doubleValue];
     
     region.span = span;
     region.center = center;
     [myMapView setRegion:region animated:TRUE];
     [myMapView regionThatFits:region];
     
-    ShopAnnotation *shopAnnotation = [[ShopAnnotation alloc] init];
-    
+    shopAnnotation.Title = self.shopName;
+    shopAnnotation.subtitle = self.shopAddress;
     shopAnnotation.coordinate = center;
-    shopAnnotation.Title = [self.location objectForKey:@"name"];
-    shopAnnotation.subTitle = [self.location objectForKey:@"address"];
     [self.myMapView addAnnotation:shopAnnotation];
     [shopAnnotation release];
 }
@@ -72,11 +70,15 @@
     [super viewDidUnload];
     [self setMyMapView:nil];
     [self setLocation:nil];
+    [self setShopName:nil];
+    [self setShopAddress:nil];
 }
 
 - (void)dealloc {
     [myMapView release];
     [location release];
+    [shopName release];
+    [shopAddress release];
     [super dealloc];
 }
 

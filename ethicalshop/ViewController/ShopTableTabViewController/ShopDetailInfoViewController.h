@@ -10,7 +10,7 @@
 #import "ShopCellInfo.h"
 #import "UserData.h"
 
-@interface ShopDetailInfoViewController : UIViewController
+@interface ShopDetailInfoViewController : UIViewController <UIAlertViewDelegate>
 {
     NSString *shop_name;
     NSString *photoLink;
@@ -18,10 +18,9 @@
     NSInteger shop_type;
     NSInteger numImage;
     UIImage *photoImage;
-    NSArray *resultArray;
     NSInteger point;
     NSInteger checkin;
-    
+    NSDictionary *shopLocation;
     NSMutableArray *shopPicArray;
     
     UILabel *nameLabel;
@@ -57,10 +56,10 @@
 @property (nonatomic) NSInteger shop_type;
 @property (nonatomic) NSInteger numImage;
 @property (nonatomic, retain) UIImage *photoImage;
-@property (nonatomic, retain) NSArray *resultArray;
 @property (nonatomic, retain) NSMutableArray *shopPicArray;
 @property (nonatomic) NSInteger point;
 @property (nonatomic) NSInteger checkin;
+@property (nonatomic, retain) NSDictionary *shopLocation;
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *mainPhoto;
@@ -78,7 +77,6 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *openTime;
 @property (nonatomic, retain) IBOutlet UILabel *closedDate;
-@property (nonatomic, retain) IBOutlet UILabel *budget;
 @property (nonatomic, retain) IBOutlet UIView *basicView;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, retain) IBOutlet UIView *discountView;

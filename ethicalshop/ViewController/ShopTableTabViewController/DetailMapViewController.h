@@ -15,9 +15,13 @@
 {
     MKMapView *myMapView;
     NSDictionary *location;
+    NSString *shopName;
+    NSString *shopAddress;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *myMapView;
 @property (nonatomic, retain) NSDictionary *location;
+@property (nonatomic, retain) NSString *shopName;
+@property (nonatomic, retain) NSString *shopAddress;
 
 @end
