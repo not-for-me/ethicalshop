@@ -25,6 +25,10 @@
 		CF55F328150CAA84006D236B /* ES_donation_img_we.png in Resources */ = {isa = PBXBuildFile; fileRef = CF55F320150CAA83006D236B /* ES_donation_img_we.png */; };
 		CF55F329150CAA84006D236B /* ES_donation_img_we@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF55F321150CAA84006D236B /* ES_donation_img_we@2x.png */; };
 		CF6B9F9015179B1700632013 /* StackMobCustomSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6B9F8F15179B1700632013 /* StackMobCustomSDK.m */; };
+		CFC1A1301523389000C7966B /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC1A12E1523388F00C7966B /* NoticeViewController.m */; };
+		CFC1A1311523389000C7966B /* NoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC1A12F1523388F00C7966B /* NoticeViewController.xib */; };
+		CFC1A1361523665100C7966B /* NoticeContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC1A1341523664F00C7966B /* NoticeContentsViewController.m */; };
+		CFC1A1371523665100C7966B /* NoticeContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC1A1351523665000C7966B /* NoticeContentsViewController.xib */; };
 		CFC645FA15173E5300D8D38C /* ES_register_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC645F815173E5200D8D38C /* ES_register_bt.png */; };
 		CFC645FB15173E5300D8D38C /* ES_register_bt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC645F915173E5300D8D38C /* ES_register_bt@2x.png */; };
 		CFD8908A14E3C49A000343C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD8908914E3C49A000343C5 /* UIKit.framework */; };
@@ -180,6 +184,12 @@
 		CF55F321150CAA84006D236B /* ES_donation_img_we@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_donation_img_we@2x.png"; sourceTree = "<group>"; };
 		CF6B9F8E15179B1700632013 /* StackMobCustomSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackMobCustomSDK.h; sourceTree = "<group>"; };
 		CF6B9F8F15179B1700632013 /* StackMobCustomSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackMobCustomSDK.m; sourceTree = "<group>"; };
+		CFC1A12D1523388F00C7966B /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
+		CFC1A12E1523388F00C7966B /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
+		CFC1A12F1523388F00C7966B /* NoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoticeViewController.xib; path = ../../ViewController/SettingsTabViewController/NoticeViewController.xib; sourceTree = "<group>"; };
+		CFC1A1331523664E00C7966B /* NoticeContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeContentsViewController.h; sourceTree = "<group>"; };
+		CFC1A1341523664F00C7966B /* NoticeContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeContentsViewController.m; sourceTree = "<group>"; };
+		CFC1A1351523665000C7966B /* NoticeContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoticeContentsViewController.xib; path = ../../ViewController/SettingsTabViewController/NoticeContentsViewController.xib; sourceTree = "<group>"; };
 		CFC645F815173E5200D8D38C /* ES_register_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ES_register_bt.png; sourceTree = "<group>"; };
 		CFC645F915173E5300D8D38C /* ES_register_bt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ES_register_bt@2x.png"; sourceTree = "<group>"; };
 		CFD8908514E3C49A000343C5 /* ethicalshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ethicalshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -733,6 +743,10 @@
 				CFD8917714E3C4E6000343C5 /* SettingsViewController.m */,
 				CFD8917814E3C4E6000343C5 /* SharingVisionViewController.h */,
 				CFD8917914E3C4E6000343C5 /* SharingVisionViewController.m */,
+				CFC1A12D1523388F00C7966B /* NoticeViewController.h */,
+				CFC1A12E1523388F00C7966B /* NoticeViewController.m */,
+				CFC1A1331523664E00C7966B /* NoticeContentsViewController.h */,
+				CFC1A1341523664F00C7966B /* NoticeContentsViewController.m */,
 			);
 			path = SettingsTabViewController;
 			sourceTree = "<group>";
@@ -794,6 +808,8 @@
 		CFD8918E14E3C4E6000343C5 /* SettingsTabView */ = {
 			isa = PBXGroup;
 			children = (
+				CFC1A1351523665000C7966B /* NoticeContentsViewController.xib */,
+				CFC1A12F1523388F00C7966B /* NoticeViewController.xib */,
 				CFD8918F14E3C4E6000343C5 /* AccountModifyViewController.xib */,
 				CFD8919014E3C4E6000343C5 /* DonationGuideViewController.xib */,
 				CFD8919114E3C4E6000343C5 /* ESGuideViewController.xib */,
@@ -1087,6 +1103,8 @@
 				CF55F329150CAA84006D236B /* ES_donation_img_we@2x.png in Resources */,
 				CFC645FA15173E5300D8D38C /* ES_register_bt.png in Resources */,
 				CFC645FB15173E5300D8D38C /* ES_register_bt@2x.png in Resources */,
+				CFC1A1311523389000C7966B /* NoticeViewController.xib in Resources */,
+				CFC1A1371523665100C7966B /* NoticeContentsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,6 +1166,8 @@
 				CFFA1BB81514D36A006AE50E /* NSData+Base64.m in Sources */,
 				CFFA1BB91514D36A006AE50E /* NSData+JSON.m in Sources */,
 				CF6B9F9015179B1700632013 /* StackMobCustomSDK.m in Sources */,
+				CFC1A1301523389000C7966B /* NoticeViewController.m in Sources */,
+				CFC1A1361523665100C7966B /* NoticeContentsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

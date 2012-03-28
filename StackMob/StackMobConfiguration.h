@@ -20,10 +20,10 @@
 #define StackMobDebug(format, ...)
 #endif
 
-#define STACKMOB_PUBLIC_KEY         @"ae4762f5-9114-4ebe-b581-3b644f020da4"
-#define STACKMOB_PRIVATE_KEY        @"14729db3-a68d-4188-88fc-8dd2c891c916"
+#define STACKMOB_PUBLIC_KEY         @"136b653e-d3cb-4a81-b702-a01d6490278d"
+#define STACKMOB_PRIVATE_KEY        @"676da8a4-0a5b-4fe5-9b3e-c3ac736ebadc"
 #define STACKMOB_APP_NAME           @"esop"
 #define STACKMOB_APP_SUBDOMAIN      @"9d3685ada3c4450f8807b2e7d61cecdf"
 #define STACKMOB_APP_DOMAIN         @"stackmob.com"
 #define STACKMOB_USER_OBJECT_NAME   @"user"
-#define STACKMOB_API_VERSION        0
+#define STACKMOB_API_VERSION        1

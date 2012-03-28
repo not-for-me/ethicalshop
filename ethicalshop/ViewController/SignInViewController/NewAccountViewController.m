@@ -117,20 +117,34 @@
     if ( [passwordTextField.text isEqualToString:confirmPasswordTextField.text] ) {
         NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:nickNameTextField.text, @"nickname", eMailTextField.text, @"email", passwordTextField.text, @"password", nil];
         [spinner startAnimating];
+
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [[StackMob stackmob] post:@"user" withArguments:args andCallback:^(BOOL success, id result) {
             if (success) {
                 [UserObject updateAll:nickNameTextField.text eMail:eMailTextField.text password:passwordTextField.text];
                 [UserObject writeUserDataToFile];
                 [spinner stopAnimating];
+                                
+                NSDictionary *args = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:0], @"point", [NSNumber numberWithInt:0], @"totalpoint", [NSNumber numberWithInt:0], @"checkin", nil];
+              
+                 [[StackMob stackmob] put:@"user" withId:[[UserObject sharedUserData] eMail] andArguments:args andCallback:^(BOOL success, id result) {                      
+                    if (success) {
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"가입 완료" message:@"착한 가게 정상적으로 가입이 완료되었습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
+                        [alert show];
+                        [alert release];
+                        
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;                
+                        [self dismissModalViewControllerAnimated:YES];
+                        
+                    } 
+                    else {
+                        
+                    }
+                }];
+          
+                               
                 
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"가입 완료" message:@"착한 가게 정상적으로 가입이 완료되었습니다." delegate:self    cancelButtonTitle:@"확인" otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-                
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;                
-                [self dismissModalViewControllerAnimated:YES];
                 
             } else {
                 [spinner stopAnimating];

@@ -12,6 +12,7 @@
 #import "DonationGuideViewController.h"
 #import "SharingVisionViewController.h"
 #import "SignInViewController.h"
+#import "NoticeViewController.h"
 
 @implementation SettingsViewController
 
@@ -87,7 +88,7 @@
         case 0:
             return 1;
         case 1:
-            return 3;
+            return 4;
         case 2:
             return 1;
         default:
@@ -138,12 +139,14 @@
             }
             
             return cell;        
-        case 1:            
+        case 1:
             if(indexPath.row == 0)
-                cell.textLabel.text = @"착한가게란?";
+                cell.textLabel.text = @"공지사항";
             else if(indexPath.row == 1)
+                cell.textLabel.text = @"착한가게란?";
+            else if(indexPath.row == 2)
                 cell.textLabel.text = @"기부대상은?";
-            else if (indexPath.row == 2)
+            else if (indexPath.row == 3)
                 cell.textLabel.text = @"초콜렛박스";
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
             return cell;
@@ -181,16 +184,21 @@
             break;
         case 1:
             if(indexPath.row == 0) {
+                NoticeViewController *detailViewController = [[NoticeViewController alloc] initWithNibName:@"NoticeViewController" bundle:nil];
+                [self.navigationController pushViewController:detailViewController animated:YES];
+                [detailViewController release];
+            }
+            else if(indexPath.row == 1) {
                 ESGuideViewController *detailViewController = [[ESGuideViewController alloc] initWithNibName:@"ESGuideViewController" bundle:nil];
                 [self.navigationController pushViewController:detailViewController animated:YES];
                 [detailViewController release];
             }                
-            else if(indexPath.row == 1) {
+            else if(indexPath.row == 2) {
                 DonationGuideViewController *detailViewController = [[DonationGuideViewController alloc] initWithNibName:@"DonationGuideViewController" bundle:nil];
                 [self.navigationController pushViewController:detailViewController animated:YES];
                 [detailViewController release];                
             }            
-            else if (indexPath.row == 2) {
+            else if (indexPath.row == 3) {
                 SharingVisionViewController *detailViewController = [[SharingVisionViewController alloc] initWithNibName:@"SharingVisionViewController" bundle:nil];
                 [self.navigationController pushViewController:detailViewController animated:YES];
                 [detailViewController release];

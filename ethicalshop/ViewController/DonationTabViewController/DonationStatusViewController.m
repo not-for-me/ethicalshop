@@ -123,6 +123,7 @@
                 
                 StackMobQuery *q = [StackMobQuery query];
                 [q orderByField:@"totalpoint" withDirection:SMOrderDescending];
+                [q orderByField:@"nickname" withDirection:SMOrderDescending];
                 [q setSelectionToFields:[NSArray arrayWithObjects:@"nickname", @"totalpoint", nil]];
                 [q setRangeStart:0 andEnd:9];
                 // perform the query and handle the results

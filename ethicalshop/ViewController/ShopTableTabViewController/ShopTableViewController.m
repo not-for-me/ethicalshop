@@ -349,7 +349,12 @@
     self.tab.rowHeight = 100;    
     [spinner startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [[StackMob stackmob] get:@"shops" withCallback:^(BOOL success, id result){
+    
+    StackMobQuery *q = [StackMobQuery query];
+    [q orderByField:@"shop_info_id" withDirection:SMOrderDescending];
+    [q setSelectionToFields:[NSArray arrayWithObjects:@"shop_info_id", @"name", @"shoppic1", @"summary", @"type", nil]];
+    // perform the query and handle the results
+    [[StackMob stackmob] get:@"shop_info" withQuery:q andCallback:^(BOOL success, id result) {
         if(success) {
             [spinner stopAnimating];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -360,11 +365,11 @@
             for(NSDictionary *dictionary in self.resultSet) {                
                 NSDictionary *dic = [self.resultSet objectAtIndex:row];
                 ShopCellInfo *shopInfo = [[ShopCellInfo alloc] init];
-                shopInfo.shops_id = [dic objectForKey:@"shops_id"];
-                shopInfo.shop_name = [dic objectForKey:@"shop_name"];
-                shopInfo.photoLink = [dic objectForKey:@"photo"];
+                shopInfo.shops_id = [dic objectForKey:@"shop_info_id"];
+                shopInfo.shop_name = [dic objectForKey:@"name"];
+                shopInfo.photoLink = [dic objectForKey:@"shoppic1"];
                 shopInfo.summary = [dic objectForKey:@"summary"];
-                shopInfo.shop_type = [[dic objectForKey:@"shop_type"] intValue];
+                shopInfo.shop_type = [[dic objectForKey:@"type"] intValue];
                 [self.listData addObject:shopInfo];
                 row++;
                 [shopInfo release];

@@ -104,7 +104,7 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     
     StackMobQuery *q = [StackMobQuery query];
     [q field:@"shop_info_id" mustEqualValue:self.shops_id];
-    [q setSelectionToFields: [NSArray arrayWithObjects:@"address", @"phone_number", @"opentime", @"closeday", @"budget", @"shoppicnum", @"point", @"checkin", @"location", @"totalpoint",nil]];
+    [q setSelectionToFields: [NSArray arrayWithObjects:@"address", @"phone_number", @"opentime", @"closeday", @"shoppicnum", @"point", @"checkin", @"location", @"totalpoint",@"shoppic2", @"shoppic3", @"shoppic4", @"shoppic5", nil]];
     [[StackMob stackmob] get:@"shop_info" withQuery:q andCallback:^(BOOL success, id result){
         if(success) {
             NSArray *resultArray = (NSArray *) result;
@@ -133,7 +133,7 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
             }];
                        
             
-            for (int i = 1; i <= self.numImage; i++) {
+            for (int i = 2; i <= self.numImage; i++) {
                 NSString *imageKey = [NSString stringWithFormat:@"shoppic%d", i];                
                 NSMutableURLRequest *requestWithBodyParams = 
                 [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [dic objectForKey:imageKey]]];
@@ -348,7 +348,7 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     }
     
     // set the content size so it can be scrollable
-    [shopPicScrollView setContentSize:CGSizeMake((self.numImage * SCROLLOBJWIDTH), [shopPicScrollView bounds].size.height)];
+    [shopPicScrollView setContentSize:CGSizeMake(( (self.numImage - 1) * SCROLLOBJWIDTH), [shopPicScrollView bounds].size.height)];
 }
 
 @end

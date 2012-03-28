@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserData.h"
 #import "NetworkReachability.h"
-#define PRGRAMVERSION @"1.0.1"
+#define PRGRAMVERSION @"1.1.0"
 
 @interface SettingsViewController : UIViewController
 {
