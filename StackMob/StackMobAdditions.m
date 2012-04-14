@@ -41,8 +41,9 @@
             preparedArgVal = argumentValue;
         }
                    
-		argumentValue = [(NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)preparedArgVal, NULL, CFSTR("?=&+"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
-		[encodedPieces addObject:[NSString stringWithFormat:@"%@=%@", [argumentKey URLEncodedString], [argumentValue URLEncodedString]]];
+        NSString *escapedKey   = [(NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)argumentKey, NULL, CFSTR("?=&+;"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
+		NSString *escapedValue = [(NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)preparedArgVal, NULL, CFSTR("?=&+;"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
+		[encodedPieces addObject:[NSString stringWithFormat:@"%@=%@", escapedKey, escapedValue]];
 	}
 	
 	return [encodedPieces componentsJoinedByString:@"&"];

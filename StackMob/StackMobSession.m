@@ -28,8 +28,8 @@ static StackMobSession* sharedSession = nil;
 @synthesize apiKey = _apiKey;
 @synthesize apiSecret = _apiSecret;
 @synthesize appName = _appName;
-@synthesize subDomain = _subDomain;
 @synthesize domain = _domain;
+@synthesize subDomain = _subDomain;
 @synthesize userObjectName = _userObjectName;
 @synthesize apiVersionNumber = _apiVersionNumber;
 @synthesize sessionKey = _sessionKey;
@@ -39,7 +39,6 @@ static StackMobSession* sharedSession = nil;
 + (StackMobSession*)session {
 	return sharedSession;
 }
-
 
 + (StackMobSession*)sessionForApplication:(NSString*)key 
                                    secret:(NSString*)secret
@@ -120,7 +119,7 @@ static StackMobSession* sharedSession = nil;
 		_apiKey = [key copy];
 		_apiSecret = [secret copy];
 		_appName = [appName copy];
-		_subDomain = [subDomain copy];
+        _subDomain = [subDomain copy];
 		_domain = [domain copy];
         _apiVersionNumber = [apiVersionNumber copy];
         [self setup];
@@ -159,8 +158,8 @@ static StackMobSession* sharedSession = nil;
     _lastRequestTime = nil;
     _requestBurstCount = 0;
     _requestTimer = nil; 
-    url = [[NSString stringWithFormat:@"%@.%@/api/%@/%@",_subDomain,_domain,_apiVersionNumber,_appName] retain];
-    pushURL = [[NSString stringWithFormat:@"http://%@.%@/push/%@/%@",_subDomain,_domain,_apiVersionNumber,_appName] retain];
+    url = [[NSString stringWithFormat:@"api.%@.%@", _subDomain, _domain] retain];
+    pushURL = [[NSString stringWithFormat:@"http://push.%@.%@", _subDomain, _domain] retain];
     secureURL = [[NSString stringWithFormat:@"https://%@", url] retain];
     regularURL = [[NSString stringWithFormat:@"http://%@", url] retain];
 }
@@ -174,7 +173,7 @@ static StackMobSession* sharedSession = nil;
 	[_apiKey release];
 	[_apiSecret release];
 	[_appName release];
-	[_subDomain release];
+    [_subDomain release];
 	[_domain release];
     [_userObjectName release];
     [_apiVersionNumber release];

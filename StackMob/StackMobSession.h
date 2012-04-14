@@ -17,6 +17,7 @@
 #import "StackMobVersion.h"
 
 static NSString *const SMDefaultDomain = @"stackmob.com";
+static NSString *const SMSubdomainDefault = @"mob1";
 
 @interface StackMobSession : NSObject {
     NSString *url;
@@ -28,7 +29,7 @@ static NSString *const SMDefaultDomain = @"stackmob.com";
 	NSString* _apiKey;
 	NSString* _apiSecret;
 	NSString* _appName;
-	NSString* _subDomain;
+    NSString* _subDomain;
 	NSString* _domain;
     NSString* _userObjectName;
 	NSString* _sessionKey;
@@ -71,14 +72,14 @@ static NSString *const SMDefaultDomain = @"stackmob.com";
 @property(nonatomic,readonly) NSString* appName;
 
 /**
- * Your application's subdomain, as passed to the constructor.
- */
-@property(nonatomic,readonly) NSString* subDomain;
-
-/**
  * Your application's domain name which defaults to stackmob.com or as passed to the constructor.
  */
 @property(nonatomic,readonly) NSString* domain;
+
+/**
+ * Your application's subdomain, as passed to the constructor.
+ */
+@property(nonatomic,readonly) NSString* subDomain;
 
 /**
  * Your application's user object name (ie - 'user' or 'account')
@@ -105,7 +106,6 @@ static NSString *const SMDefaultDomain = @"stackmob.com";
  * The globally shared session instance.
  */
 + (StackMobSession*)session;
-
 
 /**
  * Constructs a session and stores it as the globally shared session instance.
@@ -156,7 +156,7 @@ static NSString *const SMDefaultDomain = @"stackmob.com";
  * @param appName the application name
  * @param subDomain the application subDomain
  * @param domain overwrites the stackmob.com domain
- * @userObjectName the name of the user object in your StackMob App
+ * @param userObjectName the name of the user object in your StackMob App
  */
 + (StackMobSession*)sessionForApplication:(NSString*)key 
                                    secret:(NSString*)secret 

@@ -114,8 +114,8 @@
 {
     NoticeContentsViewController *detailViewController = [[NoticeContentsViewController alloc] initWithNibName:@"NoticeContentsViewController" bundle:nil];
     noticeTitleDic = (NSDictionary *) [noticeArray objectAtIndex:indexPath.row];           
- 
-    detailViewController.noticeContets = [noticeTitleDic objectForKey:@"contents"];
+  
+    detailViewController.noticeContets = [[noticeTitleDic objectForKey:@"contents"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 }

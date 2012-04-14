@@ -104,7 +104,7 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
     
     StackMobQuery *q = [StackMobQuery query];
     [q field:@"shop_info_id" mustEqualValue:self.shops_id];
-    [q setSelectionToFields: [NSArray arrayWithObjects:@"address", @"phone_number", @"opentime", @"closeday", @"shoppicnum", @"point", @"checkin", @"location", @"totalpoint",@"shoppic2", @"shoppic3", @"shoppic4", @"shoppic5", nil]];
+    [q setSelectionToFields: [NSArray arrayWithObjects:@"address", @"phone_number", @"opentime", @"closeday", @"shoppicnum", @"point", @"checkin", @"location", @"totalpoint",@"shoppic2", @"shoppic3", @"shoppic4", @"shoppic5", @"discount", @"menu", nil]];
     [[StackMob stackmob] get:@"shop_info" withQuery:q andCallback:^(BOOL success, id result){
         if(success) {
             NSArray *resultArray = (NSArray *) result;
@@ -151,6 +151,8 @@ const CGFloat SCROLLOBJWIDTH	= 280.0;
             }
             
             discountTextVIew.text = [[dic objectForKey:@"discount"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+            
+            menuInfoTextView.text = [[dic objectForKey:@"menu"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
             [spinner1 stopAnimating];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         }

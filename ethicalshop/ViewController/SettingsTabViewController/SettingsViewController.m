@@ -145,7 +145,7 @@
             else if(indexPath.row == 1)
                 cell.textLabel.text = @"착한가게란?";
             else if(indexPath.row == 2)
-                cell.textLabel.text = @"기부대상은?";
+                cell.textLabel.text = @"사용방법?";
             else if (indexPath.row == 3)
                 cell.textLabel.text = @"초콜렛박스";
             cell.selectionStyle = UITableViewCellSelectionStyleGray;

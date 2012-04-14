@@ -41,6 +41,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="890772879"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="529183560"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -55,6 +56,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 387}</string>
 						<reference key="NSSuperview" ref="890772879"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:639</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -69,19 +71,19 @@
 						<object class="NSMutableString" key="IBUIText">
 							<bytes key="NS.bytes">7LCp7ZWcIOqwgOqyjCDslbHsnYAg7ZWc64+Z64yA7ZWZ6rWQIEhHVSDsg7Xqs7wg7Jew6rOE65CcIOyL
 oOqwnOuFkCAi7IaM7IWcIOq4sOu2gCIg7JWg7ZSM66as7LyA7J207IWY7Jy866GcICDslbHsnZgg65Ox
-66Gd65CcIOqwgOunueygkCDqtJHqs6Ag7KCV67O0IO2ZleyduCDrsI8g6rCA66e57KCQ7JeQ7IScICDt
-hrXtlbQg7Ja764qUIOyImOydteq4iOydhCDsgqztmozroZwg7ZmY7JuQ7ZWY64qUIEFwcGxpY2F0aW9u
-7J6F64uI64ukLgoK7J20IOyVseydgCDtlZzrj5nrjIDtlZnqtZAg64K0IOywqe2VnCDqsIDqsowg7YyA
-7J20IOyngOuCnCAyMDEx64WEIOuwqeyGoe2GteyLoOychOybkO2ajCDso7zqtIAgTEJTIEFQUCZXRUIg
-SWRlYSDqs7XrqqjsoITsl5DshJwg64yA7IOB7J2EIOyImOyDge2VnCDslYTsnbTrlJTslrTsnZgg7J28
-67aA66W8IO2VnOuPmeuMgO2Vmeq1kOydmCDsg4Htmansl5Ag66ee7LaU7Ja0IOygnOyeke2VnCDqsoPs
-nLzroZwg7ZWc64+Z64yA7ZWZ6rWQIEhHVeyDteqzvCDtlajqu5gg7KCc6rO17ZWY64qUIOyEnOu5hOyK
-pCDsnoXri4jri6QuCgrsgqzsmqnsi5zsl5Ag66y47KCc7KCQIO2YueydgCDqsbTsnZjsgqztla3snYAg
-7JWE656Y66GcIOusuOydmO2VtCDso7zsi5zrqbQg642U7JqxIOuwnOyghOyggeyduCDrqqjsirXsnLzr
-oZwg7LCp7ZWcIOqwgOqyjOulvCDqsIDqvrjrj4TroZ0g64W466Cl7ZWY6rKg7Iq164uI64ukLgoK66mU
-7J28OiBqd2owODMxQGdtYWlsLmNvbQrtirjsnITthLA6IGh0dHBzOi8vdHdpdHRlci5jb20vZXRoaWNh
-bHNob3AxMDA0Cu2OmOydtOyKpOu2gTogaHR0cDovL3d3dy5mYWNlYm9vay5jb20vcGFnZXMvRXRoaWNh
-bHNob3AtQ29tbXVuaXR5LzI2NzQyMTAwOTk5NzI4MwoKA</bytes>
+66Gd65CcIOqwgOunueygkCDqtJHqs6Ag7KCV67O0IO2ZleyduCDrsI8g6rCA66e57KCQ7JeQ7IScIOyW
+u+ydgCDsiJjsnbXquIjsnYQg7IKs7ZqM66GcIO2ZmOybkO2VmOuKlCBBcHBsaWNhdGlvbuyeheuLiOuL
+pC4KCuydtCDslbHsnYAg7ZWc64+Z64yA7ZWZ6rWQIOuCtCDssKntlZwg6rCA6rKMIO2MgOydtCDsp4Dr
+gpwgMjAxMeuFhCDrsKnshqHthrXsi6DsnITsm5Dtmowg7KO86rSAIExCUyBBUFAmV0VCIElkZWEg6rO1
+66qo7KCE7JeQ7IScIOuMgOyDgeydhCDsiJjsg4HtlZwg7JWE7J2065SU7Ja07J2YIOydvOu2gOulvCDt
+lZzrj5nrjIDtlZnqtZDsnZgg7IOB7Zmp7JeQIOunnuy2lOyWtCDsoJzsnpHtlZwg6rKD7Jy866GcIO2V
+nOuPmeuMgO2Vmeq1kCBIR1Xsg7Xqs7wg7ZWo6ruYIOygnOqzte2VmOuKlCDshJzruYTsiqQg7J6F64uI
+64ukLgoK7IKs7Jqp7IucIOusuOygnOygkCDtmLnsnYAg6rG07J2Y7IKs7ZWt7J2AIOyVhOuemOuhnCDr
+rLjsnZjtlbQg7KO87Iuc66m0IOuNlOyasSDrsJzsoITsoIHsnbgg66qo7Iq17Jy866GcIOywqe2VnCDq
+sIDqsozrpbwg6rCA6r6464+E66GdIOuFuOugpe2VmOqyoOyKteuLiOuLpC4KCuuplOydvDogandqMDgz
+MUBnbWFpbC5jb20K7Yq47JyE7YSwOiBodHRwczovL3R3aXR0ZXIuY29tL2V0aGljYWxzaG9wMTAwNArt
+jpjsnbTsiqTrtoE6IGh0dHA6Ly93d3cuZmFjZWJvb2suY29tL3BhZ2VzL0V0aGljYWxzaG9wLUNvbW11
+bml0eS8yNjc0MjEwMDk5OTcyODMKCg</bytes>
 						</object>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">3</int>
@@ -104,6 +106,7 @@ bHNob3AtQ29tbXVuaXR5LzI2NzQyMTAwOTk5NzI4MwoKA</bytes>
 				</array>
 				<string key="NSFrame">{{0, 44}, {320, 387}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1043150101"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -187,7 +190,18 @@ bHNob3AtQ29tbXVuaXR5LzI2NzQyMTAwOTk5NzI4MwoKA</bytes>
 			<nil key="sourceID"/>
 			<int key="maxID">8</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">ESGuideViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ESGuideViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

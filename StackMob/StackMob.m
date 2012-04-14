@@ -58,6 +58,7 @@ struct {
 static StackMob *_sharedManager = nil;
 static SMEnvironment environment;
 
+
 + (StackMob *)setApplication:(NSString *)apiKey secret:(NSString *)apiSecret appName:(NSString *)appName subDomain:(NSString *)subDomain userObjectName:(NSString *)userObjectName apiVersionNumber:(NSNumber *)apiVersion
 {
     if (_sharedManager == nil) {
@@ -100,7 +101,11 @@ static SMEnvironment environment;
             _sharedManager.session = [StackMobSession sessionForApplication:STACKMOB_PUBLIC_KEY
                                                                      secret:STACKMOB_PRIVATE_KEY
                                                                     appName:STACKMOB_APP_NAME
-                                                                  subDomain:STACKMOB_APP_SUBDOMAIN
+#ifdef STACKMOB_APP_MOB
+                                                                  subDomain:STACKMOB_APP_MOB
+#else
+                                                                  subDomain:SMSubdomainDefault
+#endif
                                                                      domain:STACKMOB_APP_DOMAIN
                                                              userObjectName:STACKMOB_USER_OBJECT_NAME
                                                            apiVersionNumber:[NSNumber numberWithInt:STACKMOB_API_VERSION]];

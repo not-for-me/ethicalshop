@@ -27,6 +27,7 @@
 @interface StackMobRequest (Private)
 + (NSString*)stringFromHttpVerb:(SMHttpVerb)httpVerb;
 - (void)setBodyForRequest:(OAMutableURLRequest *)request;
+- (NSString*)getAcceptHeaderForVersion:(NSNumber *)version;
 @end
 
 @implementation StackMobRequest;
@@ -250,6 +251,11 @@
     return json;
 }
 
+- (NSString*)getAcceptHeaderForVersion:(NSNumber *)version
+{
+    return [NSString stringWithFormat:@"application/vnd.stackmob+json; version=%d",[version intValue]];
+}
+
 - (void)sendRequest
 {
 	_requestFinished = NO;
@@ -276,6 +282,7 @@
 	[request addValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
 	[request addValue:@"deflate" forHTTPHeaderField:@"Accept-Encoding"];
     [request addValue:[session userAgentString] forHTTPHeaderField:@"User-Agent"];
+    [request addValue:[self getAcceptHeaderForVersion:[session apiVersionNumber]] forHTTPHeaderField:@"Accept"];
     for(NSString *header in mHeaders) {
         if (!([header isEqualToString:@"Accept-Encoding"] || [header isEqualToString:@"User-Agent"] || [header isEqualToString:@"Content-Type"])) {
             [request addValue:(NSString *)[mHeaders objectForKey:header] forHTTPHeaderField:header];
@@ -454,6 +461,7 @@
 		NSString *contentType = [NSString stringWithFormat:@"application/json"];
 		[request addValue:contentType forHTTPHeaderField: @"Content-Type"];
 	}
+    [request addValue:[self getAcceptHeaderForVersion:[session apiVersionNumber]] forHTTPHeaderField:@"Accept"];
 	
 	[mConnectionData setLength:0];
     

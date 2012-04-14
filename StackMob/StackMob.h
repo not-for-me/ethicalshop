@@ -45,7 +45,6 @@ typedef void (^StackMobCallback)(BOOL success, id result);
 
 @property (nonatomic, retain) id<StackMobSessionDelegate> sessionDelegate;
 
-
 /*
  * Manually configure your session.  Subsequent requests for the StackMob
  * singleton can use [StackMob stackmob]

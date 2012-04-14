@@ -18,7 +18,8 @@
     
     StackMobQuery *q = [StackMobQuery query];
     [q field:@"date" mustEqualValue:todayDate];
-    [q field:@"shop_id" mustEqualValue:shop_id]; 
+    [q field:@"shop_id" mustEqualValue:shop_id];
+    [q field:@"user" mustEqualValue:[[UserObject sharedUserData] eMail]];
     
     // perform the query and handle the results
     // check whether the point is added or not
@@ -40,13 +41,13 @@
                         [[StackMob stackmob] put:@"user" withId:[[UserObject sharedUserData] eMail] andArguments:args andCallback:^(BOOL success, id result) {
                             if (success) {
                                 
-                            } 
+                          } 
                             else {
                                 
                             }
                         }];            
                         
-                        NSDictionary *args1 = [NSDictionary dictionaryWithObjectsAndKeys:todayDate, @"date", shop_id, @"shop_id", @"point", @"type", nil];
+                        NSDictionary *args1 = [NSDictionary dictionaryWithObjectsAndKeys:todayDate, @"date", shop_id, @"shop_id", @"point", @"type", [[UserObject sharedUserData] eMail], @"user",  nil];
                         
                         [[StackMob stackmob] post:@"user" withId:[[UserObject sharedUserData] eMail] andField:@"point_history" andArguments:args1 andCallback:^(BOOL success, id result) {                            
                             if (success) {
@@ -87,7 +88,8 @@
     
     StackMobQuery *q = [StackMobQuery query];
     [q field:@"date" mustEqualValue:todayDate];
-    [q field:@"shop_id" mustEqualValue:shop_id]; 
+    [q field:@"shop_id" mustEqualValue:shop_id];
+    [q field:@"user" mustEqualValue:[[UserObject sharedUserData] eMail]];
     
     // perform the query and handle the results
     // check whether the point is added or not
@@ -121,7 +123,7 @@
                             }
                         }];            
                         
-                        NSDictionary *args1 = [NSDictionary dictionaryWithObjectsAndKeys:todayDate, @"date", shop_id, @"shop_id", @"checkin", @"type", nil];
+                        NSDictionary *args1 = [NSDictionary dictionaryWithObjectsAndKeys:todayDate, @"date", shop_id, @"shop_id", @"checkin", @"type", [[UserObject sharedUserData] eMail], @"user", nil];
                         
                         [[StackMob stackmob] post:@"user" withId:[[UserObject sharedUserData] eMail] andField:@"point_history" andArguments:args1 andCallback:^(BOOL success, id result) {                            
                             if (success) {

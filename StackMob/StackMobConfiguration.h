@@ -23,7 +23,8 @@
 #define STACKMOB_PUBLIC_KEY         @"136b653e-d3cb-4a81-b702-a01d6490278d"
 #define STACKMOB_PRIVATE_KEY        @"676da8a4-0a5b-4fe5-9b3e-c3ac736ebadc"
 #define STACKMOB_APP_NAME           @"esop"
-#define STACKMOB_APP_SUBDOMAIN      @"9d3685ada3c4450f8807b2e7d61cecdf"
+#define STACKMOB_UDID_SALT          @"YOUR_SALT_HERE"
 #define STACKMOB_APP_DOMAIN         @"stackmob.com"
+#define STACKMOB_APP_MOB            @"mob1"
 #define STACKMOB_USER_OBJECT_NAME   @"user"
 #define STACKMOB_API_VERSION        1
